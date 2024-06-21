@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인사이드 아웃 2 - 영화 정보</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .logo {
+            height: 50px;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            overflow: hidden;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0;
+        }
+        nav ul li a {
+            display: block;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #fff;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+            flex: 1;
+        }
+        .movie-details {
+            display: flex;
+            align-items: flex-start;
+        }
+        .movie-poster {
+            width: 280px; /* 포스터 크기를 조금 늘림 */
+            margin-right: 20px;
+        }
+        .movie-poster img {
+            width: 100%;
+            height: auto;
+        }
+        .movie-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .movie-info-content {
+            flex-grow: 1;
+        }
+        .movie-title {
+            font-size: 2em;
+            margin: 0;
+        }
+        .movie-eng-title {
+            font-size: 1.2em;
+            color: #555;
+            margin: 5px 0 20px;
+        }
+        .movie-info p {
+            margin: 10px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px; /* 예매하기 버튼의 크기를 원래 크기로 조정 */
+            margin-top: 20px;
+            background-color: #ff3333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            width: fit-content; /* 버튼의 너비를 글자에 맞게 자동 조정 */
+        }
+        .button:hover {
+            background-color: #cc0000;
+        }
+        .section-title {
+            font-size: 1.2em;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        .statistics, .highlight, .reviews {
+            margin-bottom: 30px;
+        }
+        .highlight img {
+            width: 100%;
+            height: auto;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="main.html">
+        <img src="path/to/your/logo.png" alt="사이트 로고" class="logo">
+    </a>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="movieList.html">영화 목록</a></li>
+        <li><a href="#">극장 선택</a></li>
+        <li><a href="#">예매</a></li>
+        <li><a href="#">로그인</a></li>
+        <li><a href="#">회원 가입</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="movie-details">
+        <div class="movie-poster">
+            <img src="movie_post/1_인사이드아웃2.jpg" alt="인사이드 아웃 2 포스터">
+        </div>
+        <div class="movie-info">
+            <div class="movie-info-content">
+                <h1 class="movie-title">인사이드 아웃 2</h1>
+                <h2 class="movie-eng-title">Inside Out 2</h2>
+                <p><strong>예매율:</strong> 43.2%</p>
+                <p><strong>평점:</strong> 97%</p>
+                <p><strong>감독:</strong> 펫 더커</p>
+                <p><strong>배우:</strong> 에이미 포엘러, 마야 호크, 루이스 블랙, 필리스 스미스, 토니 헤일</p>
+                <p><strong>장르:</strong> 애니메이션</p>
+                <p><strong>기본 정보:</strong> 전체관람가, 96분, 미국</p>
+                <p><strong>개봉:</strong> 2024-06-12</p>
+                <p><strong>상영시간:</strong> 매일 14:00, 17:00, 20:00</p>
+            </div>
+            <a href="#" class="button">예매하기</a>
+        </div>
+    </div>
+
+    <div class="statistics">
+        <h2 class="section-title">예매 연령 및 성별 통계</h2>
+        <!-- 통계 내용 추가 -->
+        <p>여기에 예매 연령 및 성별 통계가 들어갑니다.</p>
+    </div>
+
+    <div class="highlight">
+        <h2 class="section-title">하이라이트 컷</h2>
+        <!-- 하이라이트 컷 이미지 추가 -->
+        <img src="path/to/highlight-image.jpg" alt="하이라이트 컷">
+    </div>
+
+    <div class="reviews">
+        <h2 class="section-title">리뷰</h2>
+        <!-- 리뷰 내용 추가 -->
+        <p>여기에 리뷰 내용이 들어갑니다.</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 LuxCinema. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
