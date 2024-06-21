@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>핸섬가이즈 - 영화 정보</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .logo {
+            height: 50px;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            overflow: hidden;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0;
+        }
+        nav ul li a {
+            display: block;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #fff;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .movie-details {
+            display: flex;
+            align-items: flex-start;
+        }
+        .movie-poster {
+            width: 280px; /* 포스터 크기를 작게 조정 */
+            margin-right: 20px;
+        }
+        .movie-poster img {
+            width: 100%;
+            height: auto;
+        }
+        .movie-info {
+            flex-grow: 1;
+        }
+        .movie-title {
+            font-size: 2em;
+            margin: 0;
+        }
+        .movie-eng-title {
+            font-size: 1.2em;
+            color: #555;
+            margin: 5px 0 20px;
+        }
+        .movie-info p {
+            margin: 10px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0 10px 0; /* 버튼 위에 공간 추가 */
+            background-color: #ff3333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #cc0000;
+        }
+        .section-title {
+            font-size: 1.2em;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        .statistics, .highlight, .reviews {
+            margin-bottom: 30px;
+        }
+        .highlight img {
+            width: 100%;
+            height: auto;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .chart-container .chart {
+            width: 45%; /* 각 차트의 너비를 45%로 설정 */
+            height: 300px; /* 각 차트의 높이를 300px로 설정 */
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+        }
+        hr {
+            border: 0;
+            height: 2px;
+            background: #333;
+            margin: 30px 0; /* 가로줄 위아래의 간격을 설정 */
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+    <a href="main.html">
+        <img src="path/to/your/logo.png" alt="사이트 로고" class="logo">
+    </a>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="movieList.html">영화 목록</a></li>
+        <li><a href="#">극장 선택</a></li>
+        <li><a href="#">예매</a></li>
+        <li><a href="signin.html">로그인</a></li>
+        <li><a href="signup.html">회원 가입</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="movie-details">
+        <div class="movie-poster">
+            <img src="movie_post/4_핸섬가이즈.jpg" alt="핸섬가이즈 포스터">
+        </div>
+        <div class="movie-info">
+            <h1 class="movie-title">핸섬가이즈</h1>
+            <h2 class="movie-eng-title">Handsome Guys</h2>
+            <p><strong>예매율:</strong> 4.9%</p>
+            <p><strong>평점:</strong> 99%</p>
+            <p><strong>감독:</strong> 남동협 </p>
+            <p><strong>배우:</strong>  이성민 ,  이희준 ,  공승연 ,  박지환 ,  이규형</p>
+            <p><strong>장르:</strong> 코미디</p>
+            <p><strong>기본 정보:</strong> 15세이상관람가, 101분, 한국</p>
+            <p><strong>개봉:</strong> 2024-06-26</p>
+            <p><strong>상영시간:</strong> 매일 13:00, 17:00, 19:00</p> <!-- 상영시간 정보  -->
+            <a href="#" class="button">예매하기</a>
+        </div>
+    </div>
+
+    <div class="synopsis">
+        <h2 class="section-title">줄거리</h2>
+        <p>“우리가 뭐 빠지는 게 있노? 집도 있고 차도 있고 인물도 훤칠한데.”<br><br>
+            자칭 터프가이 ‘재필’(이성민)과 섹시가이 ‘상구’(이희준)<br><br>
+
+            현실은 잊지 못할 첫인상으로 이사 첫날부터<br><br>
+
+            동네 경찰 ‘최 소장’(박지환)과 ‘남 순경’(이규형)의 특별 감시 대상이 되지만,<br><br>
+
+            꿈꾸던 유럽풍 드림하우스에서 새출발한다는 것에 그저 행복하기만 하다.<br><br><br>
+
+ 
+
+            그러나 행복도 잠시, 물에 빠질뻔한 ‘미나’(공승연)을 구해주려다<br><br>
+
+            오히려 납치범으로 오해받는 상황이 이어진다.<br><br>
+
+            한편 ‘미나’를 찾으러 온 불청객들을 시작으로<br><br>
+            지하실에 봉인되어 있던 악령이 깨어나며<br><br>
+
+            어두운 기운이 집안을 둘러싸기 시작하는데…<br><br><br>
+            “왜 다들 우리집에 와서 죽고 난리야!”</p>
+    </div>
+
+    <hr> <!-- 예매 성별 및 연령층 통계 위에 가로줄 추가 -->
+
+    <div class="statistics">
+        <h2 class="section-title">예매 성별 및 연령층 통계</h2>
+        <div class="chart-container">
+            <div class="chart">
+                <canvas id="genderChart"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="ageChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <h2 class="section-title">하이라이트 컷</h2>
+        <!-- 하이라이트 컷 이미지 추가 -->
+        <img src="path/to/highlight-image.jpg" alt="하이라이트 컷">
+    </div>
+
+    <div class="reviews">
+        <h2 class="section-title">리뷰</h2>
+        <!-- 리뷰 내용 추가 -->
+        <p>여기에 리뷰 내용이 들어갑니다.</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 LuxCinema. All rights reserved.</p>
+</footer>
+
+<script>
+    // 성별 통계 도넛 차트
+    const ctx1 = document.getElementById('genderChart').getContext('2d');
+    const genderChart = new Chart(ctx1, {
+        type: 'doughnut',
+        data: {
+            labels: ['남성', '여성'],
+            datasets: [{
+                label: '성별 비율',
+                data: [50, 50], // 성별 비율 데이터
+                backgroundColor: ['#0000FF', '#FF0000'],
+                hoverBackgroundColor: ['#000099', '#990000'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: '성별 예매 비율',
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+    // 연령 통계 막대 차트
+    const ctx2 = document.getElementById('ageChart').getContext('2d');
+    const ageData = [10, 25, 30, 20, 15]; // 연령 비율 데이터
+    const backgroundColors = ageData.map((value, index, array) => {
+        const max1 = Math.max(...array);
+        const max2 = Math.max(...array.filter(v => v !== max1));
+        return value === max1 || value === max2 ? 'lightgreen' : 'gray';
+    });
+
+    const ageChart = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['10대', '20대', '30대', '40대', '50대 이상'],
+            datasets: [{
+                label: '연령 비율',
+                data: ageData,
+                backgroundColor: backgroundColors,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: '연령별 예매 비율',
+                    position: 'bottom'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

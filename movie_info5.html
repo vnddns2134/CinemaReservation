@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콰이어트 플레이스-첫째 날 - 영화 정보</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .logo {
+            height: 50px;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            overflow: hidden;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0;
+        }
+        nav ul li a {
+            display: block;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #fff;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .movie-details {
+            display: flex;
+            align-items: flex-start;
+        }
+        .movie-poster {
+            width: 280px; /* 포스터 크기를 작게 조정 */
+            margin-right: 20px;
+        }
+        .movie-poster img {
+            width: 100%;
+            height: auto;
+        }
+        .movie-info {
+            flex-grow: 1;
+        }
+        .movie-title {
+            font-size: 2em;
+            margin: 0;
+        }
+        .movie-eng-title {
+            font-size: 1.2em;
+            color: #555;
+            margin: 5px 0 20px;
+        }
+        .movie-info p {
+            margin: 10px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0 10px 0; /* 버튼 위에 공간 추가 */
+            background-color: #ff3333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #cc0000;
+        }
+        .section-title {
+            font-size: 1.2em;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        .statistics, .highlight, .reviews {
+            margin-bottom: 30px;
+        }
+        .highlight img {
+            width: 100%;
+            height: auto;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .chart-container .chart {
+            width: 45%; /* 각 차트의 너비를 45%로 설정 */
+            height: 300px; /* 각 차트의 높이를 300px로 설정 */
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+        }
+        hr {
+            border: 0;
+            height: 2px;
+            background: #333;
+            margin: 30px 0; /* 가로줄 위아래의 간격을 설정 */
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+    <a href="main.html">
+        <img src="path/to/your/logo.png" alt="사이트 로고" class="logo">
+    </a>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="movieList.html">영화 목록</a></li>
+        <li><a href="#">극장 선택</a></li>
+        <li><a href="#">예매</a></li>
+        <li><a href="signin.html">로그인</a></li>
+        <li><a href="signup.html">회원 가입</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="movie-details">
+        <div class="movie-poster">
+            <img src="movie_post/5_콰이어트플레이스.jpg" alt="콰이어트플레이스 포스터">
+        </div>
+        <div class="movie-info">
+            <h1 class="movie-title">콰이어트 플레이스-첫째 날</h1>
+            <h2 class="movie-eng-title">A Quiet Place: Day One</h2>
+            <p><strong>예매율:</strong> 4.7%</p>
+            <p><strong>평점:</strong> 99%</p>
+            <p><strong>감독:</strong> 마이클 사노스키 </p>
+            <p><strong>배우:</strong> 루피타 뇽오 ,  디몬 하운수 ,  알렉스 울프</p>
+            <p><strong>장르:</strong> 스릴러</p>
+            <p><strong>기본 정보:</strong> 15세이상관람가, 99분, 미국</p>
+            <p><strong>개봉:</strong> 2024-06-26</p>
+            <p><strong>상영시간:</strong> 매일 13:00, 15:00, 18:00</p> <!-- 상영시간 정보  -->
+            <a href="#" class="button">예매하기</a>
+        </div>
+    </div>
+
+    <div class="synopsis">
+        <h2 class="section-title">줄거리</h2>
+        <p>쉿, 살고 싶다면 절대 소리내지 말 것!<br>
+            평균 소음 90 데시벨을 자랑하는 미국 최대도시 뉴욕,<br>
+            고양이 ‘프로도’와 함께 간만에 외출을 나온<br>
+            ‘사미라’는 공연을 보고 돌아가던 중<br>
+            하늘에서 떨어져 내리는 섬광을 목격하고<br>
+            곧 사람들을 닥치는 대로 공격하는<br>
+            정체불명 괴생명체의 출현에 충격에 휩싸인다.<br><br>
+
+            아수라장이 된 뉴욕 도심에 ‘절대 소리 내지 말라’는<br>
+            안내방송이 울려퍼지는 가운데 <br>
+            맨해튼의 모든 다리가 폭격으로 끊어지고,<br>
+            사람들은 온갖 위협이 도사리는 도시에 고립되고 만다.<br><br>
+
+            살아남기 위해 홀로 사투를 벌이던 '사미라'는<br>
+            우연히 또 다른 생존자 ‘에릭’을 만나고 <br>
+            두 사람은 괴생명체를 피해 지하철역부터 시가지,<br>
+            할렘까지 숨죽인 여정을 이어 나가는데…</p>
+    </div>
+
+    <hr> <!-- 예매 성별 및 연령층 통계 위에 가로줄 추가 -->
+
+    <div class="statistics">
+        <h2 class="section-title">예매 성별 및 연령층 통계</h2>
+        <div class="chart-container">
+            <div class="chart">
+                <canvas id="genderChart"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="ageChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="highlight">
+        <h2 class="section-title">하이라이트 컷</h2>
+        <!-- 하이라이트 컷 이미지 추가 -->
+        <img src="path/to/highlight-image.jpg" alt="하이라이트 컷">
+    </div>
+
+    <div class="reviews">
+        <h2 class="section-title">리뷰</h2>
+        <!-- 리뷰 내용 추가 -->
+        <p>여기에 리뷰 내용이 들어갑니다.</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 LuxCinema. All rights reserved.</p>
+</footer>
+
+<script>
+    // 성별 통계 도넛 차트
+    const ctx1 = document.getElementById('genderChart').getContext('2d');
+    const genderChart = new Chart(ctx1, {
+        type: 'doughnut',
+        data: {
+            labels: ['남성', '여성'],
+            datasets: [{
+                label: '성별 비율',
+                data: [50, 50], // 성별 비율 데이터
+                backgroundColor: ['#0000FF', '#FF0000'],
+                hoverBackgroundColor: ['#000099', '#990000'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: '성별 예매 비율',
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+    // 연령 통계 막대 차트
+    const ctx2 = document.getElementById('ageChart').getContext('2d');
+    const ageData = [10, 25, 30, 20, 15]; // 연령 비율 데이터
+    const backgroundColors = ageData.map((value, index, array) => {
+        const max1 = Math.max(...array);
+        const max2 = Math.max(...array.filter(v => v !== max1));
+        return value === max1 || value === max2 ? 'lightgreen' : 'gray';
+    });
+
+    const ageChart = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['10대', '20대', '30대', '40대', '50대 이상'],
+            datasets: [{
+                label: '연령 비율',
+                data: ageData,
+                backgroundColor: backgroundColors,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: '연령별 예매 비율',
+                    position: 'bottom'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
