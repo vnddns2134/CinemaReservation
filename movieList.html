@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화 목록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .logo {
+            height: 50px;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            overflow: hidden;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 0;
+        }
+        nav ul li a {
+            display: block;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #fff;
+        }
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .sort-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .sort-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+        .search-input {
+            padding: 5px;
+            font-size: 1em;
+        }
+        .search-button {
+            padding: 6px 10px;
+            margin-left: 5px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .search-button:hover {
+            background-color: #555;
+        }
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .movie {
+            background: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            box-sizing: border-box;
+        }
+        .movie img {
+            width: 100%;
+            height: auto;
+        }
+        .movie-info {
+            text-align: center;
+        }
+        .movie-title {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .movie-description {
+            margin: 10px 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+        .movie-rating {
+            color: #888;
+        }
+        .reserve-button {
+            background-color: #ff3333;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .reserve-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="path/to/your/logo.png" alt="사이트 로고" class="logo">
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#">영화 목록</a></li>
+        <li><a href="#">극장 선택</a></li>
+        <li><a href="#">예매</a></li>
+        <li><a href="#">로그인</a></li>
+        <li><a href="#">회원 가입</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h1>무비차트</h1>
+    <div class="sort-options">
+        <div class="sort-buttons">
+            <button onclick="sortMovies('rating')">평점 순</button>
+            <button onclick="sortMovies('release')">개봉일 순</button>
+            <button onclick="sortMovies('views')">관람객 순</button>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search-input" class="search-input" placeholder="제목으로 검색..">
+            <button onclick="searchMovies()" class="search-button">검색</button>
+        </div>
+    </div>
+    <div class="movie-list" id="movie-list">
+        <!-- 영화 항목들이 여기 삽입될 것입니다 -->
+    </div>
+</div>
+
+<script>
+    const movies = [
+        { title: "영화 제목 1", description: "이 영화는 액션과 스릴러 요소가 가득한 이야기입니다.", rating: 8.5, release: "2023-12-01", views: 1500, img: "path/to/movie1.jpg" },
+        { title: "영화 제목 2", description: "이 영화는 로맨스와 드라마 요소가 돋보이는 작품입니다.", rating: 7.8, release: "2023-11-15", views: 1200, img: "path/to/movie2.jpg" },
+        { title: "영화 제목 3", description: "이 영화는 코미디와 가족 요소가 가득한 즐거운 이야기입니다.", rating: 8.2, release: "2023-12-10", views: 1800, img: "path/to/movie3.jpg" },
+        { title: "영화 제목 4", description: "이 영화는 스릴러와 미스터리 요소가 결합된 작품입니다.", rating: 9.0, release: "2023-10-25", views: 2000, img: "path/to/movie4.jpg" },
+        { title: "영화 제목 5", description: "이 영화는 역사와 드라마 요소가 담긴 감동적인 이야기입니다.", rating: 8.0, release: "2023-09-30", views: 1000, img: "path/to/movie5.jpg" },
+        { title: "영화 제목 6", description: "이 영화는 판타지와 모험 요소가 가득한 이야기입니다.", rating: 7.5, release: "2023-08-20", views: 1300, img: "path/to/movie6.jpg" },
+        { title: "영화 제목 7", description: "이 영화는 공포와 스릴러 요소가 결합된 작품입니다.", rating: 8.7, release: "2023-07-10", views: 1600, img: "path/to/movie7.jpg" },
+        { title: "영화 제목 8", description: "이 영화는 애니메이션과 가족 요소가 돋보이는 작품입니다.", rating: 8.1, release: "2023-06-05", views: 1400, img: "path/to/movie8.jpg" },
+        { title: "영화 제목 9", description: "이 영화는 범죄와 스릴러 요소가 결합된 작품입니다.", rating: 8.3, release: "2023-05-25", views: 1700, img: "path/to/movie9.jpg" },
+        { title: "영화 제목 10", description: "이 영화는 SF와 모험 요소가 가득한 이야기입니다.", rating: 7.9, release: "2023-04-15", views: 1100, img: "path/to/movie10.jpg" },
+        { title: "영화 제목 11", description: "이 영화는 다큐멘터리와 드라마 요소가 결합된 작품입니다.", rating: 8.6, release: "2023-03-10", views: 1500, img: "path/to/movie11.jpg" },
+        { title: "영화 제목 12", description: "이 영화는 음악과 드라마 요소가 결합된 작품입니다.", rating: 7.7, release: "2023-02-05", views: 1400, img: "path/to/movie12.jpg" },
+        { title: "영화 제목 13", description: "이 영화는 모험과 액션 요소가 결합된 작품입니다.", rating: 8.4, release: "2023-01-15", views: 1600, img: "path/to/movie13.jpg" },
+        { title: "영화 제목 14", description: "이 영화는 로맨틱 코미디 요소가 결합된 작품입니다.", rating: 8.0, release: "2022-12-20", views: 1500, img: "path/to/movie14.jpg" },
+        { title: "영화 제목 15", description: "이 영화는 액션과 모험 요소가 가득한 이야기입니다.", rating: 7.6, release: "2022-11-10", views: 1300, img: "path/to/movie15.jpg" }
+    ];
+
+    function displayMovies(movies) {
+        const movieList = document.getElementById('movie-list');
+        movieList.innerHTML = '';
+        movies.forEach(movie => {
+            const movieDiv = document.createElement('div');
+            movieDiv.className = 'movie';
+            movieDiv.innerHTML = `
+                <img src="${movie.img}" alt="${movie.title}">
+                <div class="movie-info">
+                    <h2 class="movie-title">${movie.title}</h2>
+                    <p class="movie-description">${movie.description}</p>
+                    <p class="movie-rating">평점: ${movie.rating}/10</p>
+                    <p class="movie-rating">개봉일: ${movie.release}</p>
+                    <p class="movie-rating">관람객: ${movie.views}명</p>
+                    <a href="#" class="reserve-button">예매하기</a>
+                </div>
+            `;
+            movieList.appendChild(movieDiv);
+        });
+    }
+
+    function sortMovies(criteria) {
+        let sortedMovies;
+        if (criteria === 'rating') {
+            sortedMovies = movies.sort((a, b) => b.rating - a.rating);
+        } else if (criteria === 'release') {
+            sortedMovies = movies.sort((a, b) => new Date(b.release) - new Date(a.release));
+        } else if (criteria === 'views') {
+            sortedMovies = movies.sort((a, b) => b.views - a.views);
+        }
+        displayMovies(sortedMovies);
+    }
+
+    function searchMovies() {
+        const searchInput = document.getElementById('search-input').value.toLowerCase();
+        const filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchInput));
+        displayMovies(filteredMovies);
+    }
+
+    // 초기 영화 목록 표시
+    displayMovies(movies);
+</script>
+
+</body>
+</html>
