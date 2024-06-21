@@ -5,16 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>인사이드 아웃 2 - 영화 정보</title>
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            display: flex;
-            flex-direction: column;
+            margin: 0;
+            padding: 0;
         }
         header {
             background-color: #333;
@@ -53,14 +48,13 @@
             width: 80%;
             margin: 20px auto;
             overflow: hidden;
-            flex: 1;
         }
         .movie-details {
             display: flex;
             align-items: flex-start;
         }
         .movie-poster {
-            width: 280px; /* 포스터 크기를 조금 늘림 */
+            width: 280px; /* 포스터 크기를 작게 조정 */
             margin-right: 20px;
         }
         .movie-poster img {
@@ -68,12 +62,6 @@
             height: auto;
         }
         .movie-info {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-        .movie-info-content {
             flex-grow: 1;
         }
         .movie-title {
@@ -90,13 +78,12 @@
         }
         .button {
             display: inline-block;
-            padding: 10px 20px; /* 예매하기 버튼의 크기를 원래 크기로 조정 */
-            margin-top: 20px;
+            padding: 10px 20px;
+            margin: 20px 0 10px 0; /* 버튼 위에 공간 추가 */
             background-color: #ff3333;
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            width: fit-content; /* 버튼의 너비를 글자에 맞게 자동 조정 */
         }
         .button:hover {
             background-color: #cc0000;
@@ -118,8 +105,23 @@
             color: white;
             text-align: center;
             padding: 10px 0;
+            margin-top: 40px;
+        }
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .chart-container .chart {
+            width: 45%; /* 각 차트의 너비를 45%로 설정 */
+            height: 300px; /* 각 차트의 높이를 300px로 설정 */
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -131,7 +133,7 @@
 
 <nav>
     <ul>
-        <li><a href="movieList.html">영화 목록</a></li>
+        <li><a href="main.html">영화 목록</a></li>
         <li><a href="#">극장 선택</a></li>
         <li><a href="#">예매</a></li>
         <li><a href="#">로그인</a></li>
@@ -145,26 +147,35 @@
             <img src="movie_post/1_인사이드아웃2.jpg" alt="인사이드 아웃 2 포스터">
         </div>
         <div class="movie-info">
-            <div class="movie-info-content">
-                <h1 class="movie-title">인사이드 아웃 2</h1>
-                <h2 class="movie-eng-title">Inside Out 2</h2>
-                <p><strong>예매율:</strong> 43.2%</p>
-                <p><strong>평점:</strong> 97%</p>
-                <p><strong>감독:</strong> 펫 더커</p>
-                <p><strong>배우:</strong> 에이미 포엘러, 마야 호크, 루이스 블랙, 필리스 스미스, 토니 헤일</p>
-                <p><strong>장르:</strong> 애니메이션</p>
-                <p><strong>기본 정보:</strong> 전체관람가, 96분, 미국</p>
-                <p><strong>개봉:</strong> 2024-06-12</p>
-                <p><strong>상영시간:</strong> 매일 14:00, 17:00, 20:00</p>
-            </div>
+            <h1 class="movie-title">인사이드 아웃 2</h1>
+            <h2 class="movie-eng-title">Inside Out 2</h2>
+            <p><strong>예매율:</strong> 43.2%</p>
+            <p><strong>평점:</strong> 97%</p>
+            <p><strong>감독:</strong> 펫 더커</p>
+            <p><strong>배우:</strong> 에이미 포엘러, 마야 호크, 루이스 블랙, 필리스 스미스, 토니 헤일</p>
+            <p><strong>장르:</strong> 애니메이션</p>
+            <p><strong>기본 정보:</strong> 전체관람가, 96분, 미국</p>
+            <p><strong>개봉:</strong> 2024-06-12</p>
+            <p><strong>상영시간:</strong> 96분</p> <!-- 상영시간 정보 추가 -->
             <a href="#" class="button">예매하기</a>
         </div>
     </div>
 
+    <div class="synopsis">
+        <h2 class="section-title">줄거리</h2>
+        <p>여기에 줄거리 내용이 들어갑니다. 주인공 라일리의 성장 이야기와 그녀의 감정들이 겪는 새로운 모험이 펼쳐집니다.</p>
+    </div>
+
     <div class="statistics">
         <h2 class="section-title">예매 연령 및 성별 통계</h2>
-        <!-- 통계 내용 추가 -->
-        <p>여기에 예매 연령 및 성별 통계가 들어갑니다.</p>
+        <div class="chart-container">
+            <div class="chart">
+                <canvas id="genderChart"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="ageChart"></canvas>
+            </div>
+        </div>
     </div>
 
     <div class="highlight">
@@ -183,6 +194,79 @@
 <footer>
     <p>&copy; 2024 LuxCinema. All rights reserved.</p>
 </footer>
+
+<script>
+    // 성별 통계 도넛 차트
+    const ctx1 = document.getElementById('genderChart').getContext('2d');
+    const genderChart = new Chart(ctx1, {
+        type: 'doughnut',
+        data: {
+            labels: ['남성', '여성'],
+            datasets: [{
+                label: '성별 비율',
+                data: [50, 50], // 성별 비율 데이터
+                backgroundColor: ['#0000FF', '#FF0000'],
+                hoverBackgroundColor: ['#000099', '#990000'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: '성별 예매 비율',
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+    // 연령 통계 막대 차트
+    const ctx2 = document.getElementById('ageChart').getContext('2d');
+    const ageData = [10, 25, 30, 20, 15]; // 연령 비율 데이터
+    const backgroundColors = ageData.map((value, index, array) => {
+        const max1 = Math.max(...array);
+        const max2 = Math.max(...array.filter(v => v !== max1));
+        return value === max1 || value === max2 ? 'lightgreen' : 'gray';
+    });
+
+    const ageChart = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['10대', '20대', '30대', '40대', '50대 이상'],
+            datasets: [{
+                label: '연령 비율',
+                data: ageData,
+                backgroundColor: backgroundColors,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: '연령별 예매 비율',
+                    position: 'bottom'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 
 </body>
 </html>
