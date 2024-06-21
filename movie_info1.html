@@ -3,23 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>영화 목록</title>
+    <title>인사이드 아웃 2 - 영화 정보</title>
     <style>
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            padding-bottom: 60px; /* footer 높이 + 여백을 추가합니다 */
         }
         header {
             background-color: #333;
@@ -59,118 +49,85 @@
             margin: 20px auto;
             overflow: hidden;
         }
-        .sort-options {
+        .movie-details {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
+            align-items: flex-start;
         }
-        .sort-dropdown {
-            position: relative;
-            display: inline-block;
+        .movie-poster {
+            width: 280px; /* 포스터 크기를 작게 조정 */
+            margin-right: 20px;
         }
-        .sort-button {
-            padding: 7px 20px; /* 버튼의 크기를 조정합니다 */
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1em; /* 버튼의 글씨 크기를 조정합니다 */
-        }
-        .sort-button:hover {
-            background-color: #555;
-        }
-        .sort-content {
-            display: none;
-            position: absolute;
-            background-color: #f4f4f4;
-            box-shadow: 0 7px 14px rgba(0,0,0,0.2);
-            z-index: 1;
-            min-width: 115px; /* 드롭다운 메뉴의 최소 너비를 조정합니다 */
-        }
-        .sort-content a {
-            color: black;
-            padding: 10px 14px; /* 드롭다운 메뉴의 항목 크기를 조정합니다 */
-            text-decoration: none;
-            display: block;
-        }
-        .sort-content a:hover {
-            background-color: #ddd;
-        }
-        .show {
-            display: block;
-        }
-        .search-bar {
-            display: flex;
-            align-items: center;
-        }
-        .search-input {
-            padding: 5px;
-            font-size: 1em;
-        }
-        .search-button {
-            padding: 6px 10px;
-            margin-left: 5px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        .search-button:hover {
-            background-color: #555;
-        }
-        .movie-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .movie {
-            background: #fff;
-            margin-bottom: 20px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 30%;
-            box-sizing: border-box;
-        }
-        .movie img {
+        .movie-poster img {
             width: 100%;
             height: auto;
         }
         .movie-info {
-            text-align: center;
+            flex-grow: 1;
         }
         .movie-title {
+            font-size: 2em;
+            margin: 0;
+        }
+        .movie-eng-title {
             font-size: 1.2em;
-            margin: 10px 0;
-        }
-        .movie-description {
-            margin: 10px 0;
-            font-size: 0.9em;
             color: #555;
+            margin: 5px 0 20px;
         }
-        .movie-rating {
-            color: #888;
+        .movie-info p {
+            margin: 10px 0;
         }
-        .reserve-button {
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0 10px 0; /* 버튼 위에 공간 추가 */
             background-color: #ff3333;
             color: white;
-            padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
-            display: inline-block;
-            margin-top: 10px;
         }
-        .reserve-button:hover {
+        .button:hover {
             background-color: #cc0000;
+        }
+        .section-title {
+            font-size: 1.2em;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        .statistics, .highlight, .reviews {
+            margin-bottom: 30px;
+        }
+        .highlight img {
+            width: 100%;
+            height: auto;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .chart-container .chart {
+            width: 45%; /* 각 차트의 너비를 45%로 설정 */
+            height: 300px; /* 각 차트의 높이를 300px로 설정 */
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
         }
         hr {
             border: 0;
-            height: 5px;
+            height: 2px;
             background: #333;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin: 30px 0; /* 가로줄 위아래의 간격을 설정 */
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -182,7 +139,7 @@
 
 <nav>
     <ul>
-        <li><a href="#" onclick="reloadPage()">영화 목록</a></li>
+        <li><a href="movieList.html">영화 목록</a></li>
         <li><a href="#">극장 선택</a></li>
         <li><a href="#">예매</a></li>
         <li><a href="signin.html">로그인</a></li>
@@ -191,116 +148,148 @@
 </nav>
 
 <div class="container">
-    <h1>무비차트</h1>
-    <hr>
-    <div class="sort-options">
-        <div class="sort-dropdown">
-            <button onclick="toggleSortMenu()" class="sort-button">정렬 방식</button>
-            <div id="sortDropdown" class="sort-content">
-                <a href="#" onclick="sortMovies('rating')">평점 순</a>
-                <a href="#" onclick="sortMovies('release')">개봉일 순</a>
-                <a href="#" onclick="sortMovies('views')">관람객 순</a>
+    <div class="movie-details">
+        <div class="movie-poster">
+            <img src="movie_post/1_인사이드아웃2.jpg" alt="인사이드 아웃 2 포스터">
+        </div>
+        <div class="movie-info">
+            <h1 class="movie-title">인사이드 아웃 2</h1>
+            <h2 class="movie-eng-title">Inside Out 2</h2>
+            <p><strong>예매율:</strong> 43.2%</p>
+            <p><strong>평점:</strong> 97%</p>
+            <p><strong>감독:</strong> 펫 더커</p>
+            <p><strong>배우:</strong> 에이미 포엘러, 마야 호크, 루이스 블랙, 필리스 스미스, 토니 헤일</p>
+            <p><strong>장르:</strong> 애니메이션</p>
+            <p><strong>기본 정보:</strong> 전체관람가, 96분, 미국</p>
+            <p><strong>개봉:</strong> 2024-06-12</p>
+            <p><strong>상영시간:</strong> 매일 14:00, 17:00, 20:00</p> <!-- 상영시간 정보  -->
+            <a href="#" class="button">예매하기</a>
+        </div>
+    </div>
+
+    <div class="synopsis">
+        <h2 class="section-title">줄거리</h2>
+        <p>디즈니·픽사의 대표작 <인사이드 아웃><br>
+            새로운 감정과 함께 돌아오다!<br><br>
+            
+            13살이 된 라일리의 행복을 위해<br>
+            매일 바쁘게 머릿속 감정 컨트롤 본부를 운영하는 <br>
+            ‘기쁨’, ‘슬픔’, ‘버럭’, ‘까칠’, ‘소심’.<br><br>
+            
+            그러던 어느 날,<br>
+            낯선 감정인 ‘불안’, ‘당황’, ‘따분’, ‘부럽’이가 본부에 등장하고,<br>
+            언제나 최악의 상황을 대비하며<br>
+            제멋대로인 ‘불안’이와 기존 감정들은 계속 충돌한다.<br><br>
+            
+            결국 새로운 감정들에 의해 본부에서 쫓겨나게 된 기존 감정들은 <br>
+            다시 본부로 돌아가기 위해 위험천만한 모험을 시작하는데…<br>
+            
+            2024년, 전 세계를 공감으로 물들인 유쾌한 상상이 다시 시작된다!</p>
+    </div>
+
+    <hr> <!-- 예매 성별 및 연령층 통계 위에 가로줄 추가 -->
+
+    <div class="statistics">
+        <h2 class="section-title">예매 성별 및 연령층 통계</h2>
+        <div class="chart-container">
+            <div class="chart">
+                <canvas id="genderChart"></canvas>
+            </div>
+            <div class="chart">
+                <canvas id="ageChart"></canvas>
             </div>
         </div>
-        <div class="search-bar">
-            <input type="text" id="search-input" class="search-input" placeholder="제목을 입력하여 검색">
-            <button onclick="searchMovies()" class="search-button">검색</button>
-        </div>
     </div>
-    <div class="movie-list" id="movie-list">
-        <!-- 영화 항목들이 여기 삽입될 것입니다 -->
+
+    <div class="highlight">
+        <h2 class="section-title">하이라이트 컷</h2>
+        <!-- 하이라이트 컷 이미지 추가 -->
+        <img src="path/to/highlight-image.jpg" alt="하이라이트 컷">
+    </div>
+
+    <div class="reviews">
+        <h2 class="section-title">리뷰</h2>
+        <!-- 리뷰 내용 추가 -->
+        <p>여기에 리뷰 내용이 들어갑니다.</p>
     </div>
 </div>
-
-<script>
-    const movies = [
-        { title: "인사이드 아웃 2", description: "비상! 새로운 감정들이 몰려온다!", rating: 8.5, release: "2024-06-12", views: 1500, img: "movie_post/1_인사이드아웃2.jpg", info: "movie_info1.html" },
-        { title: "하이재킹", description: "목적지에 다른 승객이 탑승했다. 1971년 여객기 납치 사건", rating: 7.8, release: "2024-06-21", views: 1200, img: "movie_post/2_하이재킹.jpg", info: "movie_info2.html" },
-        { title: "탈주", description: "내일을 향한 질주. 오늘을 위한 추격.", rating: 8.2, release: "2024-07-03", views: 1800, img: "movie_post/3_탈주.jpg", info: "movie_info3.html" },
-        { title: "핸섬가이즈", description: "왜 다들 우리집에서 죽고 난리야", rating: 9.0, release: "2024-06-26", views: 2000, img: "movie_post/4_핸섬가이즈.jpg", info: "movie_info4.html" },
-        { title: "콰이어트 플레이스 - 첫째 날", description: "쉿! 절대 소리내지 말 것", rating: 8.0, release: "2024-06-29", views: 1000, img: "movie_post/5_콰이어트플레이스.jpg", info: "movie_info5.html" },
-        { title: "극장판 하이큐!!", description: "인연의 라이벌-결전의 무대!!", rating: 7.5, release: "2024-05-15", views: 1300, img: "movie_post/6_하이큐.jpg", info: "movie_info6.html" },
-        { title: "밤낚시", description: "오늘 밤, 가장 위험한 밤낚시 시작된다!.", rating: 8.7, release: "2024-06-14", views: 1600, img: "movie_post/7_밤낚시.jpg", info: "movie_info7.html" },
-        { title: "북극백화점의 안내원", description: "그 마음은, 영원히 계속된다. 영원히 이어진다.", rating: 8.1, release: "2024-06-19", views: 1400, img: "movie_post/8_북극백화점의안내원.jpg", info: "movie_info8.html" },
-        { title: "프렌치 수프", description: "극장에서 마나는 가장 로맨틱한 반찬", rating: 8.3, release: "2024-06-19", views: 1700, img: "movie_post/9_프렌치수프.jpg", info: "movie_info9.html" },
-        { title: "키타로 탄생 게게게의 수수께끼", description: "처음으로 밝혀지는, 키타로 아버지들의 이야기", rating: 7.9, release: "2024-06-12", views: 1100, img: "movie_post/10_키타로탄생.jpg", info: "movie_info10.html" },
-        { title: "존 오브 인터레스트", description: "이토록 완벽한 집이 또 있을까요?", rating: 8.6, release: "2024-06-05", views: 1500, img: "movie_post/11_존오브인터레스트.jpg", info: "movie_info11.html" },
-        { title: "1초 앞, 1초 뒤", description: "타이밍은 언제나 맞지 않아", rating: 7.7, release: "2024-06-19", views: 1400, img: "movie_post/12_1초앞1초뒤.jpg", info: "movie_info12.html" },
-        { title: "(라이브뷰잉) LILPACON", description: "Going out", rating: 8.4, release: "2024-07-12", views: 1600, img: "movie_post/13_릴파콘.jpg", info: "movie_info13.html" },
-        { title: "Pricilla", description: "엘비스가 사랑한 유일한 소녀. 세상을 뒤흔든 센세이션 로맨스", rating: 8.0, release: "2024-06-19", views: 1500, img: "movie_post/14_프리실라.jpg", info: "movie_info14.html" },
-        { title: "퓨리오사 - 매드맥스 사가", description: "분노가 깨어나다", rating: 7.6, release: "2024-05-22", views: 1300, img: "movie_post/15_퓨리오사.jpg", info: "movie_info15.html" }
-    ];
-
-    function displayMovies(movies) {
-        const movieList = document.getElementById('movie-list');
-        movieList.innerHTML = '';
-        movies.forEach((movie, index) => {
-            const movieDiv = document.createElement('div');
-            movieDiv.className = 'movie';
-            movieDiv.innerHTML = `
-                <a href="${movie.info}">
-                    <img src="${movie.img}" alt="${movie.title}">
-                </a>
-                <div class="movie-info">
-                    <h2 class="movie-title">${movie.title}</h2>
-                    <p class="movie-description">${movie.description}</p>
-                    <p class="movie-rating">평점: ${movie.rating}/10</p>
-                    <p class="movie-rating">개봉일: ${movie.release}</p>
-                    <p class="movie-rating">관람객: ${movie.views}명</p>
-                    <a href="#" class="reserve-button">예매하기</a>
-                </div>
-            `;
-            movieList.appendChild(movieDiv);
-        });
-    }
-
-    function sortMovies(criteria) {
-        let sortedMovies;
-        if (criteria === 'rating') {
-            sortedMovies = movies.sort((a, b) => b.rating - a.rating);
-        } else if (criteria === 'release') {
-            sortedMovies = movies.sort((a, b) => new Date(b.release) - new Date(a.release));
-        } else if (criteria === 'views') {
-            sortedMovies = movies.sort((a, b) => b.views - a.views);
-        }
-        displayMovies(sortedMovies);
-        toggleSortMenu(); // 메뉴 닫기
-    }
-
-    function searchMovies() {
-        const searchInput = document.getElementById('search-input').value.toLowerCase();
-        const filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchInput));
-        displayMovies(filteredMovies);
-    }
-
-    function toggleSortMenu() {
-        document.getElementById("sortDropdown").classList.toggle("show");
-    }
-
-    function reloadPage() {
-        location.reload();
-    }
-
-    // 초기 영화 목록 표시
-    displayMovies(movies);
-
-    // 드롭다운 메뉴 외부 클릭 시 닫기
-    window.onclick = function(event) {
-        if (!event.target.matches('.sort-button')) {
-            var dropdowns = document.getElementsByClassName("sort-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-</script>
 
 <footer>
     <p>&copy; 2024 LuxCinema. All rights reserved.</p>
 </footer>
+
+<script>
+    // 성별 통계 도넛 차트
+    const ctx1 = document.getElementById('genderChart').getContext('2d');
+    const genderChart = new Chart(ctx1, {
+        type: 'doughnut',
+        data: {
+            labels: ['남성', '여성'],
+            datasets: [{
+                label: '성별 비율',
+                data: [50, 50], // 성별 비율 데이터
+                backgroundColor: ['#0000FF', '#FF0000'],
+                hoverBackgroundColor: ['#000099', '#990000'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: '성별 예매 비율',
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+    // 연령 통계 막대 차트
+    const ctx2 = document.getElementById('ageChart').getContext('2d');
+    const ageData = [10, 25, 30, 20, 15]; // 연령 비율 데이터
+    const backgroundColors = ageData.map((value, index, array) => {
+        const max1 = Math.max(...array);
+        const max2 = Math.max(...array.filter(v => v !== max1));
+        return value === max1 || value === max2 ? 'lightgreen' : 'gray';
+    });
+
+    const ageChart = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ['10대', '20대', '30대', '40대', '50대 이상'],
+            datasets: [{
+                label: '연령 비율',
+                data: ageData,
+                backgroundColor: backgroundColors,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: '연령별 예매 비율',
+                    position: 'bottom'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 
 </body>
 </html>
