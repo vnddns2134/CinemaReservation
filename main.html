@@ -78,6 +78,11 @@
             padding: 20px; /* 필요한 경우 여백 추가 */
             border-radius: 10px; /* 테두리의 모서리를 10px 둥글게 설정 */
         }
+        .video-container {
+            display: flex;
+            justify-content: center; /* 가로 중앙 정렬 */
+            align-items: center;    /* 세로 중앙 정렬 */
+        }
     </style>
 </head>
 <body>
@@ -94,35 +99,39 @@
     <a href="register.html">회원가입</a>
 </nav>
 
+<div class="video-container">
+<iframe width="1200" height="700" src="https://www.youtube.com/embed/ivpHW4MWho8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
 <div class="main-content">
     <h1 style="margin-left: 80px;">현재 상영중인 영화</h1> <button style="margin-left: 1360px;">전체보기</button>
     <div class="movie-list">
         <div class="movie">
-            <a href="/movie_info1.html">
+            <a href="movie_info1.html">
                 <img src="C:\SW\movie_post\1_인사이드아웃2.jpg" alt="Movie 1">
             </a>
             <h3>인사이드 아웃 2</h3>
         </div>
         <div class="movie">
-            <a href="/movie_info2.html">
+            <a href="movie_info2.html">
                 <img src="C:\SW\movie_post\2_하이재킹.jpg" alt="Movie 2">
             </a>
             <h3>하이재킹</h3>
         </div>
         <div class="movie">
-            <a href="/movie_info3.html">
+            <a href="movie_info3.html">
                 <img src="C:\SW\movie_post\3_탈주.jpg" alt="Movie 3">
             </a>
             <h3>탈주</h3>
         </div>
         <div class="movie">
-            <a href="/movie_info4.html">
+            <a href="movie_info4.html">
                 <img src="C:\SW\movie_post\4_핸섬가이즈.jpg" alt="Movie 4">
             </a>
             <h3>핸섬가이즈</h3>
         </div>
         <div class="movie">
-            <a href="/movie_info5.html">
+            <a href="movie_info5.html">
                 <img src="C:\SW\movie_post\5_콰이어트플레이스.jpg" alt="Movie 5">
             </a>
             <h3>콰이어트 플레이스</h3>
@@ -161,13 +170,15 @@
     <img src="C:\SW\package\기프트콘3.jpg" alt="pack" width="200" height="200"> <br>4DX 기프트콘<br>19,000원
 </fieldset>
 
-<hr> <br><br>
-<h1 style="margin-left: 120px;">공지사항</h1>
-<br>
+<br><br><br><br><br> <hr> <br><br>
 
 <span style="margin-left: 80px;"></span>
-<fieldset style="width: 500px;">
-    
+<fieldset style="width: 550px;">
+    <span style="font-size: 20px; font-weight:bold;">공지사항</span> <span style="color: #6E6E6E; margin-left: 30px;"> 스파이더맨 한정판 피규어의 판매가 종료될 수 있습니다.</span><br>
+    <hr>
+    <span style="font-size: 20px; font-weight:bold;">고객센터</span> <span style="font-size: 20px; margin-left: 30px;">051-200-6212</span><br>
+    <span style="color: #6E6E6E; margin-left: 112px;">고객센터 운영시간 (평일 09:00~18:00)</span><br>
+    <span style="color: #6E6E6E; margin-left: 112px;">업무시간 외 자동응답 안내 가능합니다.</span>
 </fieldset>
 
 <br><br><br><br><br>
