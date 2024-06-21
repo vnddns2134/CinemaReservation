@@ -19,6 +19,7 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            padding-bottom: 60px; /* footer 높이 + 여백을 추가합니다 */
         }
         header {
             background-color: #333;
@@ -181,7 +182,7 @@
 
 <nav>
     <ul>
-        <li><a href="#">영화 목록</a></li>
+        <li><a href="#" onclick="reloadPage()">영화 목록</a></li>
         <li><a href="#">극장 선택</a></li>
         <li><a href="#">예매</a></li>
         <li><a href="#">로그인</a></li>
@@ -272,6 +273,10 @@
 
     function toggleSortMenu() {
         document.getElementById("sortDropdown").classList.toggle("show");
+    }
+
+    function reloadPage() {
+        location.reload();
     }
 
     // 초기 영화 목록 표시
