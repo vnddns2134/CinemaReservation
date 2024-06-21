@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxCinema - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .movie {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .movie img {
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+        }
+        .movie h3 {
+            padding: 10px 0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>LuxCinema</h1>
+</header>
+
+<nav>
+    <a href="#">영화 목록</a>
+    <a href="#">극장</a>
+    <a href="#">예매</a>
+    <a href="#">로그인</a>
+    <a href="#">회원가입</a>
+</nav>
+
+<div class="main-content">
+    <h2>현재 상영중인 영화</h2>
+    <div class="movie-list">
+        <div class="movie">
+            <img src="https://via.placeholder.com/200x300" alt="Movie 1">
+            <h3>영화 제목 1</h3>
+            <p>간략한 설명</p>
+        </div>
+        <div class="movie">
+            <img src="https://via.placeholder.com/200x300" alt="Movie 2">
+            <h3>영화 제목 2</h3>
+            <p>간략한 설명</p>
+        </div>
+        <div class="movie">
+            <img src="https://via.placeholder.com/200x300" alt="Movie 3">
+            <h3>영화 제목 3</h3>
+            <p>간략한 설명</p>
+        </div>
+        <!-- Add more movie items as needed -->
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 LuxCinema. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
