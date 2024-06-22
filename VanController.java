@@ -27,7 +27,7 @@ package com.web.p7; //컨트롤러
       return "memberRegister";
     }
 
-    @GetMapping("/member/insert") //회원가입 세부사항항
+    @GetMapping("/member/insert") //회원가입 세부사항
     public String memberInsert(String id, String pw, String name, String phone, RedirectAttributes re) {
       if ( mrep.existsById(id)) {
          re.addAttribute("msg", id+"는 이미 사용되고 있는 아이디입니다.");
