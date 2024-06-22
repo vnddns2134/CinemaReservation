@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Selection</title>
+    <style>
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        h1 {
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .main-content {
+            padding: 20px;
+        }
+  
+        fieldset {
+            display: inline-block; /* 필드셋을 인라인 블록 요소로 설정 */
+            width: 200px;
+            margin-left: 35px;
+            background-color: white; /* 배경색을 흰색으로 설정 */
+            padding: 20px; /* 필요한 경우 여백 추가 */
+            border-radius: 10px; /* 테두리의 모서리를 10px 둥글게 설정 */
+        }
+
+        .container { /*센터로 맞춰줌 */
+            width: 100%;
+            background-color: #EAEAEA;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .screen {
+            background-color: #333;
+            height: 50px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            line-height: 50px;
+            font-size: 20px;
+            width: 100%;
+        }
+        .seats { /*좌석관련*/
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            color: #BDBDBD;
+        }
+        .row { /*좌석 순서배열 */
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .seat {
+            width: 35px;
+            height: 35px;
+            background-color: #444;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #EAEAEA;
+        }
+        .seat.selected {
+            background-color: #0067ee;
+        }
+
+        .seat.occupied {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+
+        .space {
+            width: 50px;
+        }
+
+        .selection-info {
+            background-color: #0067ee;
+            color: white;
+            font-size: 16px;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .reserve-button {
+            background-color: rgb(255, 123, 0);
+            color: white;
+            font-size: 16px;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .reserve-button:hover {
+            background-color: darkorange;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .movie-info {
+            background-color: rgb(255, 123, 0);
+            color: white;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .movie-info p {
+            margin: 5px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="member.html" style="position: absolute; top: 10px; right: 10px; font-size: 12px; color:white">관리자페이지로 넘어가기</a>
+    <header>
+        <a href="home.html"><h1 style="color :white">LuxCinema</h1> </a>
+    </header>
+<nav>
+    <ul>
+<a href="movieList.html">영화 목록</a>
+<a href="#">극장 선택</a>
+<a href="booking.html">예매</a>
+<a href="login.html">로그인</a>
+<a href="logup.html">회원 가입</a>
+    </ul>
+</nav>
+    
+    <div class="container">
+        <div class="movie-info">
+            <p id="movieName">영화 이름: </p>
+            <p id="theater">영화관 지점: </p>
+            <p id="date">예매 날짜: </p>
+            <p id="time">예매 시간: </p>
+        </div>
+        <div class="screen">Screen</div>
+        <div class="seats">
+            <div class="row">
+                <div class="seat">A1</div>
+                <div class="seat">A2</div>
+                <div class="seat">A3</div>
+                <div class="seat">A4</div>
+                <div class="seat">A5</div>
+                <div class="space"></div>
+                <div class="seat">A6</div>
+                <div class="seat">A7</div>
+                <div class="seat">A8</div>
+                <div class="seat">A9</div>
+                <div class="seat">A10</div>
+                <div class="seat">A11</div>
+                <div class="seat">A12</div>
+                <div class="seat">A13</div>
+                <div class="seat">A14</div>
+                <div class="seat">A15</div>
+                <div class="seat">A16</div>
+                <div class="space"></div>
+                <div class="seat">A17</div>
+                <div class="seat">A18</div>
+                <div class="seat">A19</div>
+                <div class="seat">A20</div>
+            </div>
+            <div class="row">
+                <div class="seat">B1</div>
+                <div class="seat">B2</div>
+                <div class="seat">B3</div>
+                <div class="seat">B4</div>
+                <div class="seat">B5</div>
+                <div class="space"></div>
+                <div class="seat">B6</div>
+                <div class="seat">B7</div>
+                <div class="seat">B8</div>
+                <div class="seat">B9</div>
+                <div class="seat">B10</div>
+                <div class="seat">B11</div>
+                <div class="seat">B12</div>
+                <div class="seat">B13</div>
+                <div class="seat">B14</div>
+                <div class="seat">B15</div>
+                <div class="seat">B16</div>
+                <div class="space"></div>
+                <div class="seat">B17</div>
+                <div class="seat">B18</div>
+                <div class="seat">B19</div>
+                <div class="seat">B20</div>
+            </div>
+            <div class="row">
+                <div class="seat">C1</div>
+                <div class="seat">C2</div>
+                <div class="seat">C3</div>
+                <div class="seat">C4</div>
+                <div class="seat">C5</div>
+                <div class="space"></div>
+                <div class="seat">C6</div>
+                <div class="seat">C7</div>
+                <div class="seat">C8</div>
+                <div class="seat">C9</div>
+                <div class="seat">C10</div>
+                <div class="seat">C11</div>
+                <div class="seat">C12</div>
+                <div class="seat">C13</div>
+                <div class="seat">C14</div>
+                <div class="seat">C15</div>
+                <div class="seat">C16</div>
+                <div class="space"></div>
+                <div class="seat">C17</div>
+                <div class="seat">C18</div>
+                <div class="seat">C19</div>
+                <div class="seat">C20</div>
+            </div>
+            <div class="row">
+                <div class="seat">D1</div>
+                <div class="seat">D2</div>
+                <div class="seat">D3</div>
+                <div class="seat">D4</div>
+                <div class="seat">D5</div>
+                <div class="space"></div>
+                <div class="seat">D6</div>
+                <div class="seat">D7</div>
+                <div class="seat">D8</div>
+                <div class="seat">D9</div>
+                <div class="seat">D10</div>
+                <div class="seat">D11</div>
+                <div class="seat">D12</div>
+                <div class="seat">D13</div>
+                <div class="seat">D14</div>
+                <div class="seat">D15</div>
+                <div class="seat">D16</div>
+                <div class="space"></div>
+                <div class="seat">D17</div>
+                <div class="seat">D18</div>
+                <div class="seat">D19</div>
+                <div class="seat">D20</div>
+            </div>
+            <div class="row">
+                <div class="seat">E1</div>
+                <div class="seat">E2</div>
+                <div class="seat">E3</div>
+                <div class="seat">E4</div>
+                <div class="seat">E5</div>
+                <div class="space"></div>
+                <div class="seat">E6</div>
+                <div class="seat">E7</div>
+                <div class="seat">E8</div>
+                <div class="seat">E9</div>
+                <div class="seat">E10</div>
+                <div class="seat">E11</div>
+                <div class="seat">E12</div>
+                <div class="seat">E13</div>
+                <div class="seat">E14</div>
+                <div class="seat">E15</div>
+                <div class="seat">E16</div>
+                <div class="space"></div>
+                <div class="seat">E17</div>
+                <div class="seat">E18</div>
+                <div class="seat">E19</div>
+                <div class="seat">E20</div>
+            </div>
+            <div class="row">
+                <div class="seat">F1</div>
+                <div class="seat">F2</div>
+                <div class="seat">F3</div>
+                <div class="seat">F4</div>
+                <div class="seat">F5</div>
+                <div class="space"></div>
+                <div class="seat">F6</div>
+                <div class="seat">F7</div>
+                <div class="seat">F8</div>
+                <div class="seat">F9</div>
+                <div class="seat">F10</div>
+                <div class="seat">F11</div>
+                <div class="seat">F12</div>
+                <div class="seat">F13</div>
+                <div class="seat">F14</div>
+                <div class="seat">F15</div>
+                <div class="seat">F16</div>
+                <div class="space"></div>
+                <div class="seat">F17</div>
+                <div class="seat">F18</div>
+                <div class="seat">F19</div>
+                <div class="seat">F20</div>
+            </div>
+            <div class="row">
+                <div class="seat">G1</div>
+                <div class="seat">G2</div>
+                <div class="seat">G3</div>
+                <div class="seat">G4</div>
+                <div class="seat">G5</div>
+                <div class="space"></div>
+                <div class="seat">G6</div>
+                <div class="seat">G7</div>
+                <div class="seat">G8</div>
+                <div class="seat">G9</div>
+                <div class="seat">G10</div>
+                <div class="seat">G11</div>
+                <div class="seat">G12</div>
+                <div class="seat">G13</div>
+                <div class="seat">G14</div>
+                <div class="seat">G15</div>
+                <div class="seat">G16</div>
+                <div class="space"></div>
+                <div class="seat">G17</div>
+                <div class="seat">G18</div>
+                <div class="seat">G19</div>
+                <div class="seat">G20</div>
+            </div>
+            <div class="row">
+                <div class="seat">H1</div>
+                <div class="seat">H2</div>
+                <div class="seat">H3</div>
+                <div class="seat">H4</div>
+                <div class="seat">H5</div>
+                <div class="space"></div>
+                <div class="seat">H6</div>
+                <div class="seat">H7</div>
+                <div class="seat">H8</div>
+                <div class="seat">H9</div>
+                <div class="seat">H10</div>
+                <div class="seat">H11</div>
+                <div class="seat">H12</div>
+                <div class="seat">H13</div>
+                <div class="seat">H14</div>
+                <div class="seat">H15</div>
+                <div class="seat">H16</div>
+                <div class="space"></div>
+                <div class="seat">H17</div>
+                <div class="seat">H18</div>
+                <div class="seat">H19</div>
+                <div class="seat">H20</div>
+            </div>
+            <div class="row">
+                <div class="seat">I1</div>
+                <div class="seat">I2</div>
+                <div class="seat">I3</div>
+                <div class="seat">I4</div>
+                <div class="seat">I5</div>
+                <div class="space"></div>
+                <div class="seat">I6</div>
+                <div class="seat">I7</div>
+                <div class="seat">I8</div>
+                <div class="seat">I9</div>
+                <div class="seat">I10</div>
+                <div class="seat">I11</div>
+                <div class="seat">I12</div>
+                <div class="seat">I13</div>
+                <div class="seat">I14</div>
+                <div class="seat">I15</div>
+                <div class="seat">I16</div>
+                <div class="space"></div>
+                <div class="seat">I17</div>
+                <div class="seat">I18</div>
+                <div class="seat">I19</div>
+                <div class="seat">I20</div>
+            </div>
+            <div class="row">
+                <div class="seat">J1</div>
+                <div class="seat">J2</div>
+                <div class="seat">J3</div>
+                <div class="seat">J4</div>
+                <div class="seat">J5</div>
+                <div class="space"></div>
+                <div class="seat">J6</div>
+                <div class="seat">J7</div>
+                <div class="seat">J8</div>
+                <div class="seat">J9</div>
+                <div class="seat">J10</div>
+                <div class="seat">J11</div>
+                <div class="seat">J12</div>
+                <div class="seat">J13</div>
+                <div class="seat">J14</div>
+                <div class="seat">J15</div>
+                <div class="seat">J16</div>
+                <div class="space"></div>
+                <div class="seat">J17</div>
+                <div class="seat">J18</div>
+                <div class="seat">J19</div>
+                <div class="seat">J20</div>
+            </div>
+        </div>
+        <div class="selection-info" id="selectionInfo">선택 좌석 :</div>
+        <button class="reserve-button" id="reserveButton">예매</button>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>예매 정보</h2>
+            <p id="modalSeats">Selected seats: </p>
+            <button id="closeModal" class="reserve-button">확인</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const seats = document.querySelectorAll('.row .seat:not(.occupied)');
+            const selectionInfo = document.getElementById('selectionInfo');
+            const reserveButton = document.getElementById('reserveButton');
+            const modal = document.getElementById("myModal");
+            const span = document.getElementsByClassName("close")[0];
+            const closeModal = document.getElementById("closeModal");
+            let selectedSeatsArray = [];
+        
+            // 예시 세션 데이터
+            const sessionData = {
+                movieName: "영화 이름 예시",
+                theater: "영화관 지점 예시",
+                date: "2024-06-23",
+                time: "18:30"
+            };
+        
+            // 세션 데이터를 영화 정보 블록에 표시
+            document.getElementById("movieName").textContent = `영화 이름: ${sessionData.movieName}`;
+            document.getElementById("theater").textContent = `영화관 지점: ${sessionData.theater}`;
+            document.getElementById("date").textContent = `예매 날짜: ${sessionData.date}`;
+            document.getElementById("time").textContent = `예매 시간: ${sessionData.time}`;
+        
+            seats.forEach(seat => {
+                seat.addEventListener('click', () => {
+                    seat.classList.toggle('selected');
+                    updateSelection();
+                });
+            });
+        
+            function updateSelection() {
+                const selectedSeats = document.querySelectorAll('.row .seat.selected');
+                const seatNumbers = [...selectedSeats].map(seat => seat.textContent);
+                selectionInfo.textContent = `선택 좌석 : ${seatNumbers.length}개 / ${seatNumbers.join(', ')}`;
+                selectedSeatsArray = seatNumbers;
+            }
+        
+            reserveButton.addEventListener('click', () => {
+                if (selectedSeatsArray.length === 0) {
+                    document.getElementById("modalSeats").innerHTML = "좌석을 선택해주세요.";
+                    modal.style.display = "block";
+                } else {
+                    document.getElementById("modalSeats").innerHTML = `
+                        영화 이름: ${sessionData.movieName}<br>
+                        영화관 지점: ${sessionData.theater}<br>
+                        예매 날짜: ${sessionData.date}<br>
+                        예매 시간: ${sessionData.time}<br>
+                        선택 좌석 ${selectedSeatsArray.length}석 : ${selectedSeatsArray.join(', ')}<br>
+                        예매하시겠습니까?`;
+                    modal.style.display = "block";
+                }
+            });
+        
+            // Close the modal when the 'x' is clicked
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+        
+            // Close the modal when the '확인' button is clicked
+            closeModal.onclick = function() {
+                modal.style.display = "none";
+            }
+        
+            // Close the modal when clicking anywhere outside of the modal
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        });
+        
+    </script>
+    <br><br><br><br><br> <hr> <br><br>
+
+    <span style="margin-left: 80px;"></span>
+    <fieldset style="width: 550px;">
+        <span style="font-size: 20px; font-weight:bold;">공지사항</span> <span style="color: #6E6E6E; margin-left: 30px;"> 스파이더맨 한정판 피규어의 판매가 종료될 수 있습니다.</span><br>
+        <hr>
+        <span style="font-size: 20px; font-weight:bold;">고객센터</span> <span style="font-size: 20px; margin-left: 30px;">051-200-6212</span><br>
+        <span style="color: #6E6E6E; margin-left: 112px;">고객센터 운영시간 (평일 09:00~18:00)</span><br>
+        <span style="color: #6E6E6E; margin-left: 112px;">업무시간 외 자동응답 안내 가능합니다.</span>
+    </fieldset>
+    
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <footer>
+        <p>&copy; 2024 LuxCinema. All rights reserved.</p>
+    </footer>
+</body>
+</html>
