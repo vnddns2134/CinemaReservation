@@ -90,6 +90,16 @@ package com.web.p7; //컨트롤러
       return "redirect:/popup";
     }
 
+    @GetMapping("/password/reset") //비밀번호 모를 시 비밀번호 초기화
+    public String passwordReset(HttpSession se, String password, RedirectAttributes re) {
+      String id = (String)se.getAttribute("id");
+      String result = mrep.resetPassword(id);
+      re.addAttribute("msg", id+"님의 비밀번호가"+result+"로 변경되었습니다.");
+
+      re.addAttribute("url", "back");
+      return "redirect:/popup";
+    }
+
     @GetMapping("/cinemainfo") //관리자페이지 - 극장정보
     public String cinemainfo(Model mo) {
       long a = mrep.countMember();
