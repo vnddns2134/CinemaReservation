@@ -105,13 +105,6 @@ package com.web.p7; //컨트롤러
       return "redirect:/popup";
     }
 
-    @GetMapping("/cinemainfo") //관리자페이지 - 극장정보
-    public String cinemainfo(Model mo) {
-      long a = mrep.countMember();
-      mo.addAttribute("mcount", fo.format(a)+"명"); //총 가입 회원 수 표시
-      return "cinemainfo";
-    }
-
     @GetMapping("/logout") //로그아웃
     public String logout(HttpSession se, Model mo) {
       mo.addAttribute("id", se.getAttribute("id"));
