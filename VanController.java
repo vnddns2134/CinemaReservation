@@ -55,7 +55,7 @@ package com.web.p7; //컨트롤러
     public String loginCheck(HttpSession se, String id, Model mo, RedirectAttributes re) {
       if(mrep.existsById(id)) {
          se.setAttribute("id", id);
-         return "redirect:/menu";
+         return "redirect:/main";
       }
       else {
          re.addAttribute("msg", id+"는 미등록 아이디입니다. 확인 후 로그인 부탁드립니다.");
