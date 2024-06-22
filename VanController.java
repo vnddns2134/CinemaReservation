@@ -70,6 +70,11 @@ package com.web.p7; //컨트롤러
       return "menu";
     }
 
+    @GetMapping("/admin") //관리자페이지
+    public String admin() {
+      return "admin";
+    }
+
     @GetMapping("/myinfo") //마이페이지
     public String myinfo(HttpSession se, Model mo) {
       String id = (String)se.getAttribute("id");
