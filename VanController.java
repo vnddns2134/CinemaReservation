@@ -64,10 +64,10 @@ package com.web.p7; //컨트롤러
       }
     }
 
-    @GetMapping("/menu") //메인화면면
+    @GetMapping("/main") //메인화면
     public String menu(HttpSession se, Model mo) {
       mo.addAttribute("id", se.getAttribute("id"));
-      return "menu";
+      return "main";
     }
 
     @GetMapping("/admin") //관리자페이지
