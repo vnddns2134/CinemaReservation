@@ -252,7 +252,7 @@
         </div>
     </div>
     <div class="footer">
-        <a href="seat_select.html" class ="a">좌석선택</a>
+        <button class="select-seats">좌석선택</button>
     </div>
 </main>
 <script>
