@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+
+        .sidebar ul li a {
+            color: #ecf0f1;
+            text-decoration: none;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #bdc3c7;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header #logoutBtn {
+            background-color: #e74c3c;
+            color: #ecf0f1;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        header #logoutBtn:hover {
+            background-color: #c0392b;
+        }
+
+        section {
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="#dashboard" onclick="showSection('dashboard')">Dashboard</a></li>
+            <li><a href="#users" onclick="showSection('users')">Users</a></li>
+            <li><a href="#movies" onclick="showSection('movies')">Movies</a></li>
+            <li><a href="#settings" onclick="showSection('settings')">Settings</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Welcome, Admin</h1>
+            <button id="logoutBtn">Logout</button>
+        </header>
+        <section id="dashboard">
+            <h2>Dashboard</h2>
+            <p>Overview of your website.</p>
+        </section>
+        <section id="users" class="hidden">
+            <h2>Users</h2>
+            <!-- Add user management functionality here -->
+            <div align="center">
+                <h3> 전체 회원 리스트</h3>
+                <table border="1">
+                <tr> <th>id <th>password <th>name <th>email
+               <tr th:each="me:${arr}"> 
+               <td th:text="${me.id}" id="td1">id
+                <td th:text="${me.password}">pw
+                <td th:text="${me.username}">username
+                <td th:text="${me.email}">email
+                </table>
+            <a href="memberList.html">View Member List</a> <!-- Thymeleaf 링크 추가 -->
+            
+        </section>
+        <section id="movies" style="display:none;">
+            <h2>Movies</h2>
+            <p>Movie statistics and management.</p>
+            <div th:include="admin/memberList :: memberList"></div>
+            <!-- Add movie statistics and management functionality here -->
+        </section>
+        <section id="settings" class="hidden">
+            <h2>Settings</h2>
+            <p>Configure your settings here.</p>
+        </section>
+    </div>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            alert('Logging out...');
+            // Add your logout functionality here
+        });
+    </script>
+</body>
+</html>
