@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        nav {
+            background-color: #444;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .search {
+            float: right;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .search input {
+            padding: 5px;
+        }
+
+        .search button {
+            padding: 5px 10px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .container div {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(25% - 10px);
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .container h2 {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .container ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .container ul li {
+            padding: 5px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .container ul li:hover,
+        .container ul li.selected {
+            background-color: #ddd;
+        }
+
+        .footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+        }
+
+        .select-seats {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .select-seats:hover {
+            background-color: #0056b3;
+        }
+
+        .times {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .times p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .time-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .time-list p, .time-list button {
+            text-align: center;
+            margin-bottom: 10px;
+            width: 100px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .time-list button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <a href="main.html">
+        <img src="path/to/your/logo.png" alt="사이트 로고" class="logo">
+    </a>
+</header>
+<nav>
+    <ul>
+        <li><a href="movieList.html">영화 목록</a></li>
+        <li><a href="#">극장 선택</a></li>
+        <li><a href="#">예매</a></li>
+        <li><a href="signin.html">로그인</a></li>
+        <li><a href="signup.html">회원 가입</a></li>
+    </ul>
+</nav>
+<main>
+    <div class="container">
+        <div class="movies">
+            <h2>영화</h2>
+            <ul>
+                <li data-movie="인사이드아웃">인사이드아웃</li>
+                <li data-movie="하이재킹">하이재킹</li>
+                <li data-movie="탈주">탈주</li>
+                <li data-movie="콰이어트플레이스">콰이어트플레이스</li>
+                <li data-movie="햄핸섬가이즈">핸섬가이즈</li>
+                <li data-movie="하이큐">극장판 하이큐!! 쓰레기장의 결전</li>
+                <li data-movie="밤낚시">밤낚시</li>
+                <li data-movie="북극백화점의 안내원">북극백화점의 안내원</li>
+                <li data-movie="프렌치 수프">프렌치 수프</li>
+                <li data-movie="키타로 탄생">키타로 탄생 게게게의 수수께끼</li>
+                <li data-movie="존 오브 인터레스트">존 오브 인터레스트</li>
+                <li data-movie="1초 앞, 1초 뒤">1초 앞, 1초 뒤</li>
+                <li data-movie="LILPACON">LILPACON：Going Out - SOOPER CONCERT</li>
+                <li data-movie="프리실라">프리실라</li>
+                <li data-movie="퓨리오사">퓨리오사-매드맥스 사가</li>
+            </ul>
+        </div>
+        <div class="theaters">
+            <h2>극장</h2>
+            <ul>
+                <li data-theater="서면">서면</li>
+                <li data-theater="하단">하단</li>
+                <li data-theater="화명">건대입구</li>
+                <li data-theater="동래">구로</li>
+            </ul>
+        </div>
+        <div class="dates">
+            <h2>날짜</h2>
+            <ul>
+                <li data-date="6월 24일">6월 24일</li>
+                <li data-date="6월 25일">6월 25일</li>
+                <li data-date="6월 26일">6월 26일</li>
+                <li data-date="6월 27일">6월 27일</li>
+                <li data-date="6월 28일">6월 28일</li>
+                <li data-date="6월 29일">6월 29일</li>
+                <li data-date="6월 30일">6월 30일</li>
+            </ul>
+        </div>
+        <div class="times">
+            <h2>시간</h2>
+            <p>영화, 극장, 날짜를 선택해주세요.</p>
+            <div class="time-list"></div>
+        </div>
+    </div>
+    <div class="footer">
+        <button class="select-seats">좌석선택</button>
+    </div>
+</main>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const movies = document.querySelectorAll(".movies li");
+        const theaters = document.querySelectorAll(".theaters li");
+        const dates = document.querySelectorAll(".dates li");
+        const timeList = document.querySelector(".time-list");
+        const selectSeatsButton = document.querySelector(".select-seats");
+
+        const fixedTimes = ["9:00", "11:00", "13:00", "15:00", "17:00", "19:00", "21:00"];
+
+        let selectedMovie = "";
+        let selectedTheater = "";
+        let selectedDate = "";
+        let selectedTime = "";
+
+        movies.forEach(movie => {
+            movie.addEventListener("click", function() {
+                selectedMovie = movie.dataset.movie;
+                updateSelected();
+                updateHighlight(movies, movie);
+            });
+        });
+
+        theaters.forEach(theater => {
+            theater.addEventListener("click", function() {
+                selectedTheater = theater.dataset.theater;
+                updateSelected();
+                updateHighlight(theaters, theater);
+            });
+        });
+
+        dates.forEach(date => {
+            date.addEventListener("click", function() {
+                selectedDate = date.dataset.date;
+                updateSelected();
+                updateHighlight(dates, date);
+            });
+        });
+
+        function updateSelected() {
+            if (selectedMovie !== "" && selectedTheater !== "" && selectedDate !== "") {
+                const timeButtons = fixedTimes.map(time => {
+                    const button = document.createElement("button");
+                    button.textContent = time;
+                    button.addEventListener("click", function() {
+                        selectedTime = time;
+                        updateHighlight(timeList.querySelectorAll("button"), button);
+                    });
+                    return button;
+                });
+
+                timeList.innerHTML = "";
+                timeButtons.forEach(button => {
+                    timeList.appendChild(button);
+                });
+            }
+        }
+
+        function updateHighlight(list, selectedElement) {
+            list.forEach(item => item.classList.remove("selected"));
+            selectedElement.classList.add("selected");
+        }
+
+        selectSeatsButton.addEventListener("click", function() {
+            if (selectedMovie && selectedTheater && selectedDate && selectedTime) {
+                const url = `seat_select.html?movie=${encodeURIComponent(selectedMovie)}&theater=${encodeURIComponent(selectedTheater)}&date=${encodeURIComponent(selectedDate)}&time=${encodeURIComponent(selectedTime)}`;
+                window.location.href = url;
+            } else {
+                alert("영화, 극장, 날짜, 시간을 모두 선택해주세요.");
+            }
+        });
+    });
+</script>
+</body>
+</html>
+
