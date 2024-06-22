@@ -120,4 +120,10 @@ package com.web.p7; //컨트롤러
         mo.setAttribute("times", se.getAttribute("times"));
         return "seat_select.html";
     }
+
+    CREATE TABLE movies.movies (
+  name VARCHAR(40) NOT NULL,
+  seat1 INT NOT NULL,
+  seat2 INT NOT NULL,
+  PRIMARY KEY (name));
     
