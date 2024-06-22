@@ -126,4 +126,5 @@ package com.web.p7; //컨트롤러
   seat1 INT NOT NULL,
   seat2 INT NOT NULL,
   PRIMARY KEY (name));
-    
+
+
