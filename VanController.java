@@ -95,7 +95,7 @@ package com.web.p7; //컨트롤러
     @GetMapping("/seat_select") // 좌석선택
     public String seatSelect(HttpSession se, String movieName, String theater, String date, String time, String selectedSeatsArray, Model mo, RedirectAttributes re) {
       mo.addAttribute("id", se.getAttribute("id"));
-      if(morep.updateMovie(id, movieName, theater, date, time, selectedSeatsArray) == 0)
+      if(morep.updateMovie(id, movieName, theater, date, time, selectedSeatsArray) == 0) //updateMovie 구현 필요
         re.addAttribute("msg", "예매 실패. 고객센터로 문의하세요.");
       else
         re.addAttribute("msg", "예매되었습니다.");
