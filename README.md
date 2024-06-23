@@ -1,1 +1,1 @@
-# CinemaReservation
+영화관 페이지 백엔드 시스템 최종본입니다.
