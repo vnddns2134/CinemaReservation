@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxCinema - My Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        header a {
+            text-decoration: none;
+            color: white;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .profile-info, .booking-history {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px 0;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-info h2, .booking-history h2 {
+            margin-top: 0;
+        }
+        .edit-form {
+            display: none;
+        }
+        .password-form {
+            display: none;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        button {
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+    <script>
+        function toggleEditForm() {
+            const form = document.getElementById('editForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+            const passwordButton = document.getElementById('passwordButton');
+            passwordButton.style.display = 'block';
+        }
+
+        function togglePasswordForm() {
+            const form = document.getElementById('passwordForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function validatePasswordForm() {
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            if (newPassword.length < 8 || confirmPassword.length < 8) {
+                errorMessage.textContent = '비밀번호를 8자 이상 입력해주세요.';
+                return false;
+            }
+
+            if (newPassword !== confirmPassword) {
+                errorMessage.textContent = '변경된 비밀번호가 일치하지 않습니다.';
+                return false;
+            }
+
+            errorMessage.textContent = '';
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <a href="home.html"><h1 style="color: white; text-decoration: none;">LuxCinema</h1></a>
+</header>
+
+<nav>
+    <a href="movieList.html">영화 목록</a>
+    <a href="cinema.html">극장 선택</a>
+    <a href="booking.html">예매</a>
+    <a href="logout.html">로그아웃</a>
+    <a href="mypage.html">마이페이지</a>
+</nav>
+
+<div class="main-content">
+    <div class="profile-info">
+        <h2>프로필 정보</h2>
+        <p><strong>아이디:</strong> <span id="profileUsername" th:text="${user.username}">username</span></p>
+        <p><strong>이름:</strong> <span id="profileName" th:text="${user.name}">홍길동</span></p>
+        <p><strong>이메일:</strong> <span id="profileEmail" th:text="${user.email}">honggildong@example.com</span></p>
+        <button onclick="toggleEditForm()">프로필 변경</button>
+
+        <div id="editForm" class="edit-form">
+            <h3>프로필 변경</h3>
+            <form action="/mypage/update" method="get">
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" th:value="${user.name}"><br>
+                <label for="email">이메일:</label>
+                <input type="email" id="email" name="email" th:value="${user.email}"><br>
+                <button type="submit">저장</button>
+            </form>
+            <button id="passwordButton" onclick="togglePasswordForm()" style="display: none;">비밀번호 변경</button>
+        </div>
+
+        <div id="passwordForm" class="password-form">
+            <h3>비밀번호 변경</h3>
+            <form action="/password/reset" method="post" onsubmit="return validatePasswordForm()">
+                <label for="currentPassword">현재 비밀번호:</label>
+                <input type="password" id="currentPassword" name="currentPassword"><br>
+                <label for="newPassword">변경된 비밀번호:</label>
+                <input type="password" id="newPassword" name="newPassword"><br>
+                <label for="confirmPassword">비밀번호 확인:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword"><br>
+                <button type="submit">저장</button>
+                <p id="errorMessage" class="error"></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="booking-history">
+        <h2>예매 내역</h2>
+        <table style="width:100%; border-collapse: collapse;">
+            <tr>
+                <th style="border: 1px solid #ddd; padding: 8px;">영화 제목</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">극장</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">상영일자</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">상영 시간</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">좌석</th>
+            </tr>
+            <tr th:each="booking : ${bookings}">
+                <td style="border: 1px solid #ddd; padding: 8px;" th:text="${booking.movieTitle}">없음</td>
+                <td style="border: 1px solid #ddd; padding: 8px;" th:text="${booking.theater}">없음</td>
+                <td style="border: 1px solid #ddd; padding: 8px;" th:text="${booking.screeningDate}">없음</td>
+                <td style="border: 1px solid #ddd; padding: 8px;" th:text="${booking.screeningTime}">없음</td>
+                <td style="border: 1px solid #ddd; padding: 8px;" th:text="${booking.seat}">없음</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 LuxCinema. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
