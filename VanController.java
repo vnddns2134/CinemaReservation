@@ -1,4 +1,4 @@
-package com.web.p7; //컨트롤러
+package com.web.p7; // 컨트롤러
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.stereotype.Controller;
  import org.springframework.ui.Model;
