@@ -91,13 +91,25 @@ package com.web.p7; //컨트롤러
       mo.addAttribute("id", se.getAttribute("id"));
       return "booking";
     }
-  
+
+    @GetMapping("/seat_select") // 좌석선택
+    public String seatSelect(HttpSession se, String movieName, String theater, String date, String time, String selectedSeatsArray, Model mo, RedirectAttributes re) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      if(morep.updateMovie(id, movieName, theater, date, time, selectedSeatsArray) == 0)
+        re.addAttribute("msg", "예매 실패. 고객센터로 문의하세요.");
+      else
+        re.addAttribute("msg", "예매되었습니다.");
+
+      re.addAttribute("url", "home");
+      return "redirect:/popup";
+    }
+
     @GetMapping("/mypage") //마이페이지
     public String myinfo(HttpSession se, Model mo) {
       String id = (String)se.getAttribute("id");
       Member me = mrep.findById(id).get();
       mo.addAttribute("me",me);
-      return "myinfo";
+      return "mypage";
     }
 
     @GetMapping("/mypage/update") //회원이 정보 변경할 시 필요함
@@ -126,5 +138,5 @@ package com.web.p7; //컨트롤러
     public String logout(HttpSession se, Model mo) {
       mo.addAttribute("id", se.getAttribute("id"));
       se.invalidate();
-      return "redirect/menu";
+      return "redirect/home";
     }
