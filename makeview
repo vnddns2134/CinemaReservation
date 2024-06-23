@@ -1,4 +1,10 @@
 CREATE VIEW user_ticket_view AS
-SELECT u.id, u.username, u.email, t.movieName, t.theater, t.date, t.time, t.seats
-FROM users u
-JOIN ticket t ON u.id = t.Id
+SELECT 
+    u.id AS user_id,
+    t.movieName,
+    t.theater,
+    t.date,
+    t.time,
+    t.seats
+FROM `user` u
+JOIN ticket t ON u.id = t.id;
