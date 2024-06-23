@@ -1,0 +1,8 @@
+create database theater_db; // 프로젝트에 사용된 데이터베이스
+
+create table member( // 프로젝트에 사용된 member 테이블
+    id varchar(20) not null primary key,
+    password varchar(20) not null,
+    username varchar(20) not null,
+    email varchar(30) not null
+);
