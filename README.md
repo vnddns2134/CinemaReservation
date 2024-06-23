@@ -2,9 +2,13 @@
 
 
 
-Member.Java - Entity
+Member.Java - Entity (member 테이블)
 
-MemberRepository.Java - Repository
+Movie.Java - Entity (movie 테이블)
+
+MemberRepository.Java - Repository (member 테이블)
+
+MovieRepository.Java - Repository (movie 테이블)
 
 VanController.Java - Controller
 
