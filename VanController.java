@@ -10,6 +10,9 @@ package com.web.p7; //컨트롤러
  public class VanController {
     @Autowired
     private MemberRepository mrep;
+    
+    @Autowired
+    private MovieRepository morep;
 
     @GetMapping("/login") //로그인
     public String login() {
@@ -81,9 +84,15 @@ package com.web.p7; //컨트롤러
     public String cinema(HttpSession se, Model mo) {
       mo.addAttribute("id", se.getAttribute("id"));
       return "cinema";
-    
-
-    @GetMapping("/myinfo") //마이페이지
+    }
+  
+    @GetMapping("/booking") // 예매
+    public String booking(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "booking";
+    }
+  
+    @GetMapping("/mypage") //마이페이지
     public String myinfo(HttpSession se, Model mo) {
       String id = (String)se.getAttribute("id");
       Member me = mrep.findById(id).get();
@@ -91,7 +100,7 @@ package com.web.p7; //컨트롤러
       return "myinfo";
     }
 
-    @GetMapping("/myinfo/update") //회원이 정보 변경할 시 필요함
+    @GetMapping("/mypage/update") //회원이 정보 변경할 시 필요함
     public String myinfoUpdate(HttpSession se, String password, String username, String email, RedirectAttributes re) {
       String id = (String)se.getAttribute("id");
       if(mrep.updateMember(id, password, username, email) == 0)
