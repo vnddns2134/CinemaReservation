@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>예매</title>
+    <title>LuxCinema-booking</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,11 +12,14 @@
             padding: 0;
         }
 
-        header {
+       header {
             background-color: #333;
-            color: #fff;
-            padding: 10px 0;
+            color: white;
+            padding: 20px 0;
             text-align: center;
+        }
+        header h1 {
+            margin: 0;
         }
 
         .logo {
@@ -24,15 +27,15 @@
         }
 
         nav {
+            display: flex;
+            justify-content: center;
             background-color: #444;
-            color: #fff;
-            overflow: hidden;
         }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
             text-align: center;
         }
 
@@ -141,6 +144,23 @@
             border-radius: 5px;
             text-decoration: none;
         }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        fieldset {
+            display: inline-block; /* 필드셋을 인라인 블록 요소로 설정 */
+            width: 200px;
+            margin-left: 35px;
+            background-color: white; /* 배경색을 흰색으로 설정 */
+            padding: 20px; /* 필요한 경우 여백 추가 */
+            border-radius: 10px; /* 테두리의 모서리를 10px 둥글게 설정 */
+        }
 
         .select-seats:hover {
             background-color: #0056b3;
@@ -200,12 +220,11 @@
         <a href="home.html"><h1 style="color :white">LuxCinema</h1> </a>
     </header>
 <nav>
-    <ul>
-        <li><a href="movieList.html">영화 목록</a></li>
-        <li><a href="booking.html">예매</a></li>
-        <li><a href="login.html">로그인</a></li>
-        <li><a href="logup.html">회원 가입</a></li>
-    </ul>
+    <a href="movieList.html">영화 목록</a>
+    <a href="cinema.html">극장 선택</a>
+    <a href="booking.html">예매</a>
+    <a href="login.html">로그인</a>
+    <a href="logup.html">회원가입</a>
 </nav>
 <main>
     <div class="container">
@@ -232,11 +251,10 @@
         <div class="theaters">
             <h2>극장</h2>
             <ul>
-                <li data-theater="서면삼정타워">서면삼정타워</li>
-                <li data-theater="아시아드">아시아드</li>
-                <li data-theater="센텀시티">센텀시티</li>
                 <li data-theater="서면">서면</li>
-                <li data-theater="대연">대연</li>
+                <li data-theater="하단">하단</li>
+                <li data-theater="건대입구">건대입구</li>
+                <li data-theater="구로">구로</li>
             </ul>
         </div>
         <div class="dates">
@@ -331,7 +349,7 @@
             if (sessionData.movieName && sessionData.theater && sessionData.date && sessionData.time) {
                 const confirmationMessage = `${sessionData.movieName}, ${sessionData.theater}, ${sessionData.date}, ${sessionData.time}로 하시겠습니까?`;
                 if (confirm(confirmationMessage)) {
-                    const url = `seat_select.html?movies=${encodeURIComponent(sessionData.movieName)}&theaters=${encodeURIComponent(sessionData.theater)}&dates=${encodeURIComponent(sessionData.date)}&times=${encodeURIComponent(sessionData.time)}`;
+                    const url = `seat_select.html?movie=${encodeURIComponent(sessionData.movieName)}&theater=${encodeURIComponent(sessionData.theater)}&date=${encodeURIComponent(sessionData.date)}&time=${encodeURIComponent(sessionData.time)}`;
                     window.location.href = url;
                 }
             } else {
@@ -343,17 +361,14 @@
 <br><br><br><br><br> <hr> <br><br>
 
 <span style="margin-left: 80px;"></span>
-<fieldset style="width: 550px; padding: 10px;">
-    <legend style="font-size: 20px; font-weight: bold; color: #333;">공지사항</legend>
-    <p style="color: #6E6E6E;">스파이더맨 한정판 피규어의 판매가 종료될 수 있습니다.</p>
+<fieldset style="width: 550px;">
+    <span style="font-size: 20px; font-weight:bold;">공지사항</span> <span style="color: #6E6E6E; margin-left: 30px;"> 스파이더맨 한정판 피규어의 판매가 종료될 수 있습니다.</span><br>
     <hr>
-    <legend style="font-size: 20px; font-weight: bold; color: #333;">고객센터</legend>
-    <p style="font-size: 16px; margin-bottom: 5px;">051-200-6212</p>
-    <p style="color: #6E6E6E; font-size: 14px; margin-bottom: 5px;">고객센터 운영시간 (평일 09:00~18:00)</p>
-    <p style="color: #6E6E6E; font-size: 14px;">업무시간 외 자동응답 안내 가능합니다.</p>
+    <span style="font-size: 20px; font-weight:bold;">고객센터</span> <span style="font-size: 20px; margin-left: 30px;">051-200-6212</span><br>
+    <span style="color: #6E6E6E; margin-left: 112px;">고객센터 운영시간 (평일 09:00~18:00)</span><br>
+    <span style="color: #6E6E6E; margin-left: 112px;">업무시간 외 자동응답 안내 가능합니다.</span>
 </fieldset>
 
-<br><br><br><br><br>
 <br><br><br><br><br>
 <footer>
     <p>&copy; 2024 LuxCinema. All rights reserved.</p>
