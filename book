@@ -251,13 +251,13 @@
 <body>
 
     <header>
-        <a href="home.html"><h1 style="color :white">LuxCinema</h1> </a>
-        <a href="home.html"><button id="logoutBtn">Logout</button></a>
+        <a href="home"><h1 style="color :white">LuxCinema</h1> </a>
+        <a href="home"><button id="logoutBtn">Logout</button></a>
     </header>
 
 <nav>
-    <a href="member.html">멤버관리</a>
-    <a href="book.html">예매율</a>
+    <a href="member">멤버관리</a>
+    <a href="book">예매율</a>
 </nav>
 <div class="container">
     <h1>영화 예매율</h1>
@@ -321,7 +321,6 @@
                     <p class="movie-rating">평점: ${movie.rating}/10</p>
                     <p class="movie-rating">개봉일: ${movie.release}</p>
                     <p class="movie-rating">관람객: ${movie.views}명</p>
-                    <a href="#" class="reserve-button">상세페이지</a>
                     <a>예매율 : ${reservationRate}%</a>
                 </div>
             `;
