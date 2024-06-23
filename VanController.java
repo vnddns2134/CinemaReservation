@@ -11,24 +11,18 @@ package com.web.p7; //컨트롤러
     @Autowired
     private MemberRepository mrep;
 
-    @GetMapping("/member/list") //회원리스트
-    public String memberList(Model mo) {
-    mo.addAttribute("arr",mrep.findAll());
-    return "memberList";
-    }
-
     @GetMapping("/login") //로그인
     public String login() {
     return "login";
     }
 
-    @GetMapping("/member/register") //회원가입
-    public String memberRegister() {
-      return "memberRegister";
+    @GetMapping("/logup") //회원가입
+    public String logup() {
+      return "logup";
     }
 
-    @GetMapping("/member/insert") //회원가입 세부사항
-    public String memberInsert(String id, String pw, String name, String phone, RedirectAttributes re) {
+    @GetMapping("/logup/insert") //회원가입 세부사항
+    public String logupInsert(String id, String pw, String name, String phone, RedirectAttributes re) {
       if ( mrep.existsById(id)) {
          re.addAttribute("msg", id+"는 이미 사용되고 있는 아이디입니다.");
          re.addAttribute("url", "back");
@@ -55,7 +49,7 @@ package com.web.p7; //컨트롤러
     public String loginCheck(HttpSession se, String id, Model mo, RedirectAttributes re) {
       if(mrep.existsById(id)) {
          se.setAttribute("id", id);
-         return "redirect:/main";
+         return "redirect:/home";
       }
       else {
          re.addAttribute("msg", id+"는 미등록 아이디입니다. 확인 후 로그인 부탁드립니다.");
@@ -64,16 +58,30 @@ package com.web.p7; //컨트롤러
       }
     }
 
-    @GetMapping("/main") //메인화면
+    @GetMapping("/home") //메인화면
     public String menu(HttpSession se, Model mo) {
       mo.addAttribute("id", se.getAttribute("id"));
-      return "main";
+      return "home";
     }
 
-    @GetMapping("/admin") //관리자페이지
-    public String admin() {
-      return "admin";
+    @GetMapping("/member") //관리자페이지
+    public String member(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      mo.addAttribute("arr",mrep.findAll());
+      return "member";
     }
+
+    @GetMapping("/movieList") //영화목록
+    public String movieList(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movieList";
+    }
+
+    @GetMapping("/cinema") // 극장선택
+    public String cinema(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "cinema";
+    
 
     @GetMapping("/myinfo") //마이페이지
     public String myinfo(HttpSession se, Model mo) {
