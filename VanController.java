@@ -50,15 +50,23 @@ public class VanController {
    }
 
    @PostMapping("/login/check") // 로그인 시 데이터베이스와 대조
-   public String loginCheck(HttpSession se, String id, Model mo, RedirectAttributes re) {
+   public String loginCheck(HttpSession se, String id, String password, Model mo, RedirectAttributes re) {
      if(mrep.existsById(id)) {
-        se.setAttribute("id", id);
-        return "redirect:/home";
+    	String storedPassword = mrep.findPasswordById(id);
+    	if (storedPassword != null && storedPassword.equals(password)) {
+           se.setAttribute("id", id);
+           return "redirect:/home";
+        }
+    	else {
+            re.addAttribute("msg", "비밀번호가 일치하지 않습니다.");
+            re.addAttribute("url", "/login");
+            return "redirect:/popup";
+        }
      }
      else {
-        re.addAttribute("msg", id+"는 미등록 아이디입니다. 확인 후 로그인 부탁드립니다.");
-        re.addAttribute("url", "/login");
-        return "redirect:/popup";
+         re.addAttribute("msg", id + "는 미등록 아이디입니다. 확인 후 로그인 부탁드립니다.");
+         re.addAttribute("url", "/login");
+         return "redirect:/popup";
      }
    }
 
@@ -82,87 +90,104 @@ public class VanController {
    }
 
    @GetMapping("/movieList") // 영화목록
-   public String movieList() {
+   public String movieList(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movieList";
    }
 
    @GetMapping("/movie_info1") // 영화 1번
-   public String movieInfo1() {
+   public String movieInfo1(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info1";
    }
 
    @GetMapping("/movie_info2") // 영화 2번
-   public String movieInfo2() {
+   public String movieInfo2(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info2";
    }
 
    @GetMapping("/movie_info3") // 영화 3번
-   public String movieInfo3() {
+   public String movieInfo3(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info3";
    }
 
    @GetMapping("/movie_info4") // 영화 4번
-   public String movieInfo4() {
+   public String movieInfo4(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info4";
    }
 
    @GetMapping("/movie_info5") // 영화 5번
-   public String movieInfo5() {
+   public String movieInfo5(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info5";
    }
 
    @GetMapping("/movie_info6") // 영화 6번
-   public String movieInfo6() {
+   public String movieInfo6(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info6";
    }
 
    @GetMapping("/movie_info7") // 영화 7번
-   public String movieInfo7() {
+   public String movieInfo7(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info7";
    }
 
    @GetMapping("/movie_info8") // 영화 8번
-   public String movieInfo8() {
+   public String movieInfo8(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info8";
    }
 
    @GetMapping("/movie_info9") // 영화 9번
-   public String movieInfo9() {
+   public String movieInfo9(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info9";
    }
 
    @GetMapping("/movie_info10") // 영화 10번
-   public String movieInfo10() {
+   public String movieInfo10(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info10";
    }
 
    @GetMapping("/movie_info11") // 영화 11번
-   public String movieInfo11() {
+   public String movieInfo11(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info11";
    }
 
    @GetMapping("/movie_info12") // 영화 12번
-   public String movieInfo12() {
+   public String movieInfo12(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info12";
    }
 
    @GetMapping("/movie_info13") // 영화 13번
-   public String movieInfo13() {
+   public String movieInfo13(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info13";
    }
 
    @GetMapping("/movie_info14") // 영화 14번
-   public String movieInfo14() {
+   public String movieInfo14(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info14";
    }
 
    @GetMapping("/movie_info15") // 영화 15번
-   public String movieInfo15() {
+   public String movieInfo15(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "movie_info15";
    }
 
    @GetMapping("/cinema") // 극장선택
-   public String cinema() {
+   public String cinema(HttpSession se, Model mo) {
+	 mo.addAttribute("id", se.getAttribute("id"));
      return "cinema";
    }
  
@@ -174,19 +199,25 @@ public class VanController {
 
    @GetMapping("/seat_select") // 좌석선택
    public String seatSelect(HttpSession se, Model mo) {
-     mo.addAttribute("id", se.getAttribute("id"));
+     mo.addAttribute("sessionData.id", se.getAttribute("id"));
      return "seat_select";
    }
 
-   @GetMapping("/seat_insert") // 좌석선택_데이터 추가
+   @PostMapping("/seat_insert") // 좌석선택_데이터 추가
    public String seatInsert(String id, String movieName, String theater, String date, String time, String selectedSeatsArray, RedirectAttributes re) {
-     Movie mo = new Movie();
-     mo.id = id; mo.movieName = movieName; mo.theater = theater;
-     mo.date = date; mo.time = time; mo.seats = selectedSeatsArray;
-     morep.save(mo); // 회원-영화 예매 정보 업데이트
-     re.addAttribute("msg", id+"님, 예매되었습니다.");
-     re.addAttribute("url", "/home");
-     return "redirect:/home";
+	 if (mrep.existsById(id)) {
+	    re.addAttribute("msg", id+"님, 예매되었습니다.");
+	    re.addAttribute("url", "/home");
+	    Movie mo = new Movie();
+	    mo.id = id; mo.movieName = movieName; mo.theater = theater;
+	    mo.date = date; mo.time = time; mo.seats = selectedSeatsArray;
+	    morep.save(mo); // 회원-영화 예매 정보 업데이트
+	 }
+	 else {
+		 re.addAttribute("msg", "로그인 후 이용부탁드립니다.");
+		 re.addAttribute("url", "/login");
+	 }
+     return "redirect:/popup";
    }
 
    @GetMapping("/mypage") // 마이페이지
@@ -200,25 +231,11 @@ public class VanController {
    @PostMapping("/mypage/update") // 회원이 정보 변경할 시 필요함
    public String myinfoUpdate(HttpSession se, String password, String username, String email, RedirectAttributes re) {
      String id = (String)se.getAttribute("id");
-     if(mrep.updateMember(id, password, username, email) == 0)
+     if(mrep.updateMember(id, password, email) == 0)
         re.addAttribute("msg", "정보 변경 실패. 고객센터로 문의하세요.");
      else
         re.addAttribute("msg", id+"님의 정보가 변경되었습니다.");
      
-     re.addAttribute("url", "back");
-     return "redirect:/popup";
-   }
-
-   @GetMapping("/password/reset") // 비밀번호 모를 시 비밀번호 초기화
-   public String passwordReset(HttpSession se, RedirectAttributes re) {
-     String id = (String)se.getAttribute("id");
-     int result = mrep.resetPassword(id);
-     if (result > 0) {
-    	 re.addAttribute("msg", id+"님의 비밀번호가"+result+"로 변경되었습니다.");
-     }
-     else {
-    	 re.addFlashAttribute("msg", "비밀번호 변경에 실패했습니다.");
-     }
      re.addAttribute("url", "back");
      return "redirect:/popup";
    }
