@@ -73,6 +73,7 @@
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            box-sizing: border-box; /* 추가 */
         }
         .form-group button {
             width: 100%;
@@ -82,6 +83,8 @@
             border: none;
             cursor: pointer;
             font-size: 1em;
+            border-radius: 5px; /* 버튼과 입력칸의 모서리를 일치 */
+            box-sizing: border-box; /* 추가 */
         }
         .form-group button:hover {
             background-color: #555;
@@ -101,7 +104,7 @@
             bottom: 0;
         }
     </style>
-        <a href="member.html" style="position: absolute; top: 10px; right: 10px; font-size: 12px; color:white">관리자페이지로 넘어가기</a>
+    <a href="member.html" style="position: absolute; top: 10px; right: 10px; font-size: 12px; color:white">관리자페이지로 넘어가기</a>
 </head>
 <body>
 
@@ -111,8 +114,8 @@
 
 <nav>
     <a href="movieList.html">영화 목록</a>
-    <a href="#">극장 선택</a>
-    <a href="#">예매</a>
+    <a href="cinema.html">극장 선택</a>
+    <a href="booking.html">예매</a>
     <a href="login.html">로그인</a>
     <a href="logup.html">회원가입</a>
 </nav>
@@ -148,6 +151,42 @@
         </form>
     </div>
 </div>
+
+<script>
+    function validateForm(event) {
+        event.preventDefault();
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+        const errorMessage = document.getElementById('error-message');
+        
+        if (password !== confirmPassword) {
+            errorMessage.textContent = '비밀번호가 다릅니다.';
+            return false;
+        }
+        
+        if (password.length < 8) {
+            errorMessage.textContent = '비밀번호를 8자 이상 입력해주세요.';
+            return false;
+        }
+        
+        // If all validations pass, submit the form
+        errorMessage.textContent = '';
+        document.getElementById('signup-form').submit();
+    }
+</script>
+
+<br><br><br><br><br> <hr> <br><br>
+
+<span style="margin-left: 80px;"></span>
+<fieldset style="width: 550px;">
+    <span style="font-size: 20px; font-weight:bold;">공지사항</span> <span style="color: #6E6E6E; margin-left: 30px;"> 스파이더맨 한정판 피규어의 판매가 종료될 수 있습니다.</span><br>
+    <hr>
+    <span style="font-size: 20px; font-weight:bold;">고객센터</span> <span style="font-size: 20px; margin-left: 30px;">051-200-6212</span><br>
+    <span style="color: #6E6E6E; margin-left: 112px;">고객센터 운영시간 (평일 09:00~18:00)</span><br>
+    <span style="color: #6E6E6E; margin-left: 112px;">업무시간 외 자동응답 안내 가능합니다.</span>
+</fieldset>
+
+<br><br><br><br><br>
 
 <footer>
     <p>&copy; 2024 LuxCinema. All rights reserved.</p>
