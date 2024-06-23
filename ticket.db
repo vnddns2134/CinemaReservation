@@ -1,10 +1,13 @@
-CREATE TABLE `ticket` (
-  `id` int NOT NULL,
-  `movieName` varchar(45) NOT NULL,
-  `theater` varchar(45) NOT NULL,
-  `date` varchar(45) NOT NULL,
-  `time` varchar(45) NOT NULL,
-  `seats` varchar(255) NOT NULL,
-  KEY `id_idx` (`id`),
-  CONSTRAINT `id` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-)
+CREATE TABLE movies.ticket (
+  id VARCHAR(20) NOT NULL,
+  movieName VARCHAR(45) NULL,
+  theater VARCHAR(45) NULL,
+  date VARCHAR(45) NULL,
+  time VARCHAR(45) NULL,
+  seats VARCHAR(255) NULL,
+  INDEX id_idx (id ASC) VISIBLE,
+  CONSTRAINT id
+    FOREIGN KEY (id)
+    REFERENCES movies.user (id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
