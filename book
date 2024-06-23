@@ -269,6 +269,7 @@
                 <a href="#" onclick="sortMovies('rating')">평점 순</a>
                 <a href="#" onclick="sortMovies('release')">개봉일 순</a>
                 <a href="#" onclick="sortMovies('views')">관람객 순</a>
+                <a href="#" onclick="sortMovies('reservationRate')">예매율순</a>
             </div>
         </div>
         <div class="search-bar">
@@ -303,7 +304,11 @@
     function displayMovies(movies) {
         const movieList = document.getElementById('movie-list');
         movieList.innerHTML = '';
+        const totalViews = movies.reduce((acc, movie) => acc + movie.views, 0);
+
+
         movies.forEach((movie, index) => {
+            const reservationRate = (movie.views / totalViews * 100).toFixed(2);
             const movieDiv = document.createElement('div');
             movieDiv.className = 'movie';
             movieDiv.innerHTML = `
@@ -316,7 +321,8 @@
                     <p class="movie-rating">평점: ${movie.rating}/10</p>
                     <p class="movie-rating">개봉일: ${movie.release}</p>
                     <p class="movie-rating">관람객: ${movie.views}명</p>
-                    <a href="#" class="reserve-button">상세페이지</a> <a>예매율 : </a>
+                    <a href="#" class="reserve-button">상세페이지</a>
+                    <a>예매율 : ${reservationRate}%</a>
                 </div>
             `;
             movieList.appendChild(movieDiv);
