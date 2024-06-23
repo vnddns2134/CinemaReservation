@@ -4,29 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>영화 목록</title>
-    <style>
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
+    <style> /* 메인홈 스타일 */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            padding-bottom: 60px; /* footer 높이 + 여백을 추가합니다 */
+            background-color: #f4f4f4;
         }
         header {
             background-color: #333;
-            color: #fff;
-            padding: 10px 0;
+            color: white;
+            padding: 20px 0;
             text-align: center;
         }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        h1 {
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .main-content {
+            padding: 20px;
+        }
+  
+        fieldset {
+            display: inline-block; /* 필드셋을 인라인 블록 요소로 설정 */
+            width: 200px;
+            margin-left: 35px;
+            background-color: white; /* 배경색을 흰색으로 설정 */
+            padding: 20px; /* 필요한 경우 여백 추가 */
+            border-radius: 10px; /* 테두리의 모서리를 10px 둥글게 설정 */
+        }
+        </style>
+
+
+        <style> /* 무비스타일 */
         .logo {
             height: 50px;
         }
@@ -70,12 +96,12 @@
             display: inline-block;
         }
         .sort-button {
-            padding: 7px 20px; /* 버튼의 크기를 조정합니다 */
+            padding: 7px 20px;
             background-color: #333;
             color: white;
             border: none;
             cursor: pointer;
-            font-size: 1.1em; /* 버튼의 글씨 크기를 조정합니다 */
+            font-size: 1.1em;
         }
         .sort-button:hover {
             background-color: #555;
@@ -86,11 +112,11 @@
             background-color: #f4f4f4;
             box-shadow: 0 7px 14px rgba(0,0,0,0.2);
             z-index: 1;
-            min-width: 115px; /* 드롭다운 메뉴의 최소 너비를 조정합니다 */
+            min-width: 115px;
         }
         .sort-content a {
             color: black;
-            padding: 10px 14px; /* 드롭다운 메뉴의 항목 크기를 조정합니다 */
+            padding: 10px 14px;
             text-decoration: none;
             display: block;
         }
@@ -171,23 +197,21 @@
             margin-bottom: 20px;
         }
     </style>
+
+    <a href="member.html" style="position: absolute; top: 10px; right: 10px; font-size: 12px; color:white">관리자페이지로 넘어가기</a>
 </head>
 <body>
 
-<header>
-    <a href="main.html">
-        <img src="path/to/your/logo.png" alt="사이트 로고" class="logo">
-    </a>
-</header>
+    <header>
+        <a href="home.html"><h1 style="color :white">LuxCinema</h1> </a>
+    </header>
 
 <nav>
-    <ul>
-        <li><a href="#" onclick="reloadPage()">영화 목록</a></li>
-        <li><a href="#">극장 선택</a></li>
-        <li><a href="#">예매</a></li>
-        <li><a href="#">로그인</a></li>
-        <li><a href="#">회원 가입</a></li>
-    </ul>
+    <a href="movieList.html">영화 목록</a>
+    <a href="cinema.html">극장 선택</a>
+    <a href="booking.html">예매</a>
+    <a href="login.html">로그인</a>
+    <a href="logup.html">회원가입</a>
 </nav>
 
 <div class="container">
@@ -297,11 +321,19 @@
         }
     }
 </script>
-
+<br><br><br><br><br> <hr> <br><br>
+<span style="margin-left: 80px;"></span>
+<fieldset style="width: 550px;">
+    <span style="font-size: 20px; font-weight:bold;">공지사항</span> <span style="color: #6E6E6E; margin-left: 30px;"> 스파이더맨 한정판 피규어의 판매가 종료될 수 있습니다.</span><br>
+    <hr>
+    <span style="font-size: 20px; font-weight:bold;">고객센터</span> <span style="font-size: 20px; margin-left: 30px;">051-200-6212</span><br>
+    <span style="color: #6E6E6E; margin-left: 112px;">고객센터 운영시간 (평일 09:00~18:00)</span><br>
+    <span style="color: #6E6E6E; margin-left: 112px;">업무시간 외 자동응답 안내 가능합니다.</span>
+</fieldset>
+<!-- footer 요소 추가 -->
 <footer>
     <p>&copy; 2024 LuxCinema. All rights reserved.</p>
 </footer>
 
 </body>
 </html>
-
