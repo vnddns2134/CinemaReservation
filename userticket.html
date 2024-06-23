@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Tickets</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>User Tickets</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>User ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Movie Name</th>
+        <th>Theater</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Seats</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- 각 사용자별로 티켓 정보를 표시 -->
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <ul>
+                <!-- 사용자의 티켓을 가져와서 출력 -->
+                <li th:each="ticket : ${tickets}" th:if="${ticket.id == user.id}">
+                    <span th:text="${ticket.movieName}"></span>
+                </li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <!-- 사용자의 티켓을 가져와서 출력 -->
+                <li th:each="ticket : ${tickets}" th:if="${ticket.id == user.id}">
+                    <span th:text="${ticket.theater}"></span>
+                </li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <!-- 사용자의 티켓을 가져와서 출력 -->
+                <li th:each="ticket : ${tickets}" th:if="${ticket.id == user.id}">
+                    <span th:text="${ticket.date}"></span>
+                </li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <!-- 사용자의 티켓을 가져와서 출력 -->
+                <li th:each="ticket : ${tickets}" th:if="${ticket.id == user.id}">
+                    <span th:text="${ticket.time}"></span>
+                </li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <!-- 사용자의 티켓을 가져와서 출력 -->
+                <li th:each="ticket : ${tickets}" th:if="${ticket.id == user.id}">
+                    <span th:text="${ticket.seats}"></span>
+                </li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
