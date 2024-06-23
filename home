@@ -94,8 +94,8 @@
 
 <nav>
     <a href="movieList.html">영화 목록</a>
-    <a href="#">극장 선택</a>
-    <a href="#">예매</a>
+    <a href="cinema.html">극장 선택</a>
+    <a href="booking.html">예매</a>
     <a href="login.html">로그인</a>
     <a href="logup.html">회원가입</a>
 </nav>
