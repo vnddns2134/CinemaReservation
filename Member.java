@@ -1,6 +1,4 @@
 package com.web.p7; //엔티티
-import java.time.LocalDateTime;
-import org.hibernate.annotations.CreationTimestamp;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
