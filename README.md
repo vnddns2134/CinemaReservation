@@ -15,3 +15,5 @@ VanController.Java - Controller
 P7Application.Java - Applcation
 
 applcation.properties - theater_db 사용 명시
+
+theater_html.zip - html 전체 파일 모음
