@@ -80,6 +80,96 @@ package com.web.p7; // 컨트롤러
       return "movieList";
     }
 
+    @GetMapping("/movie_info1") // 영화 1번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info1";
+    }
+
+    @GetMapping("/movie_info2") // 영화 2번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info2";
+    }
+
+    @GetMapping("/movie_info3") // 영화 3번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info3";
+    }
+
+    @GetMapping("/movie_info4") // 영화 4번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info4";
+    }
+
+    @GetMapping("/movie_info5") // 영화 5번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info5";
+    }
+
+    @GetMapping("/movie_info6") // 영화 6번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info6";
+    }
+
+    @GetMapping("/movie_info7") // 영화 7번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info7";
+    }
+
+    @GetMapping("/movie_info8") // 영화 8번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info8";
+    }
+
+    @GetMapping("/movie_info9") // 영화 9번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info9";
+    }
+
+    @GetMapping("/movie_info10") // 영화 10번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info10";
+    }
+
+    @GetMapping("/movie_info11") // 영화 11번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info11";
+    }
+
+    @GetMapping("/movie_info12") // 영화 12번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info12";
+    }
+
+    @GetMapping("/movie_info13") // 영화 13번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info13";
+    }
+
+    @GetMapping("/movie_info14") // 영화 14번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info14";
+    }
+
+    @GetMapping("/movie_info15") // 영화 15번
+    public String movieInfo1(HttpSession se, Model mo) {
+      mo.addAttribute("id", se.getAttribute("id"));
+      return "movie_info15";
+    }
+
     @GetMapping("/cinema") // 극장선택
     public String cinema(HttpSession se, Model mo) {
       mo.addAttribute("id", se.getAttribute("id"));
