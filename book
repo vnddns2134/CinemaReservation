@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -284,21 +284,21 @@
 
 <script>
     const movies = [
-        { title: "인사이드 아웃 2", description: "비상! 새로운 감정들이 몰려온다!", rating: 8.5, release: "2024-06-12", views: 1500, img: "movie_post/1_인사이드아웃2.jpg", info: "movie_info1" },
-        { title: "하이재킹", description: "목적지에 다른 승객이 탑승했다. 1971년 여객기 납치 사건", rating: 7.8, release: "2024-06-21", views: 1200, img: "movie_post/2_하이재킹.jpg", info: "movie_info2" },
-        { title: "탈주", description: "내일을 향한 질주. 오늘을 위한 추격.", rating: 8.2, release: "2024-07-03", views: 1800, img: "movie_post/3_탈주.jpg", info: "movie_info3" },
-        { title: "핸섬가이즈", description: "왜 다들 우리집에서 죽고 난리야", rating: 9.0, release: "2024-06-26", views: 2000, img: "movie_post/4_핸섬가이즈.jpg", info: "movie_info4" },
-        { title: "콰이어트 플레이스 - 첫째 날", description: "쉿! 절대 소리내지 말 것", rating: 8.0, release: "2024-06-29", views: 1000, img: "movie_post/5_콰이어트플레이스.jpg", info: "movie_info5" },
-        { title: "극장판 하이큐!!", description: "인연의 라이벌-결전의 무대!!", rating: 7.5, release: "2024-05-15", views: 1300, img: "movie_post/6_하이큐.jpg", info: "movie_info6" },
-        { title: "밤낚시", description: "오늘 밤, 가장 위험한 밤낚시 시작된다!.", rating: 8.7, release: "2024-06-14", views: 1600, img: "movie_post/7_밤낚시.jpg", info: "movie_info7" },
-        { title: "북극백화점의 안내원", description: "그 마음은, 영원히 계속된다. 영원히 이어진다.", rating: 8.1, release: "2024-06-19", views: 1400, img: "movie_post/8_북극백화점의안내원.jpg", info: "movie_info8" },
-        { title: "프렌치 수프", description: "극장에서 마나는 가장 로맨틱한 반찬", rating: 8.3, release: "2024-06-19", views: 1700, img: "movie_post/9_프렌치수프.jpg", info: "movie_info9" },
-        { title: "키타로 탄생 게게게의 수수께끼", description: "처음으로 밝혀지는, 키타로 아버지들의 이야기", rating: 7.9, release: "2024-06-12", views: 1100, img: "movie_post/10_키타로탄생.jpg", info: "movie_info10" },
-        { title: "존 오브 인터레스트", description: "이토록 완벽한 집이 또 있을까요?", rating: 8.6, release: "2024-06-05", views: 1500, img: "movie_post/11_존오브인터레스트.jpg", info: "movie_info11" },
-        { title: "1초 앞, 1초 뒤", description: "타이밍은 언제나 맞지 않아", rating: 7.7, release: "2024-06-19", views: 1400, img: "movie_post/12_1초앞1초뒤.jpg", info: "movie_info12" },
-        { title: "(라이브뷰잉) LILPACON", description: "Going out", rating: 8.4, release: "2024-07-12", views: 1600, img: "movie_post/13_릴파콘.jpg", info: "movie_info13" },
-        { title: "Pricilla", description: "엘비스가 사랑한 유일한 소녀. 세상을 뒤흔든 센세이션 로맨스", rating: 8.0, release: "2024-06-19", views: 1500, img: "movie_post/14_프리실라.jpg", info: "movie_info14" },
-        { title: "퓨리오사 - 매드맥스 사가", description: "분노가 깨어나다", rating: 7.6, release: "2024-05-22", views: 1300, img: "movie_post/15_퓨리오사.jpg", info: "movie_info15" }
+        { title: "인사이드 아웃 2", description: "비상! 새로운 감정들이 몰려온다!", rating: 8.5, release: "2024-06-12", views: 1500, img: "1_인사이드아웃2.jpg", info: "movie_info1" },
+        { title: "하이재킹", description: "목적지에 다른 승객이 탑승했다. 1971년 여객기 납치 사건", rating: 7.8, release: "2024-06-21", views: 1200, img: "2_하이재킹.jpg", info: "movie_info2" },
+        { title: "탈주", description: "내일을 향한 질주. 오늘을 위한 추격.", rating: 8.2, release: "2024-07-03", views: 1800, img: "3_탈주.jpg", info: "movie_info3" },
+        { title: "핸섬가이즈", description: "왜 다들 우리집에서 죽고 난리야", rating: 9.0, release: "2024-06-26", views: 2000, img: "4_핸섬가이즈.jpg", info: "movie_info4" },
+        { title: "콰이어트 플레이스 - 첫째 날", description: "쉿! 절대 소리내지 말 것", rating: 8.0, release: "2024-06-29", views: 1000, img: "5_콰이어트플레이스.jpg", info: "movie_info5" },
+        { title: "극장판 하이큐!!", description: "인연의 라이벌-결전의 무대!!", rating: 7.5, release: "2024-05-15", views: 1300, img: "6_하이큐.jpg", info: "movie_info6" },
+        { title: "밤낚시", description: "오늘 밤, 가장 위험한 밤낚시 시작된다!.", rating: 8.7, release: "2024-06-14", views: 1600, img: "7_밤낚시.jpg", info: "movie_info7" },
+        { title: "북극백화점의 안내원", description: "그 마음은, 영원히 계속된다. 영원히 이어진다.", rating: 8.1, release: "2024-06-19", views: 1400, img: "8_북극백화점의안내원.jpg", info: "movie_info8" },
+        { title: "프렌치 수프", description: "극장에서 마나는 가장 로맨틱한 반찬", rating: 8.3, release: "2024-06-19", views: 1700, img: "9_프렌치수프.jpg", info: "movie_info9" },
+        { title: "키타로 탄생 게게게의 수수께끼", description: "처음으로 밝혀지는, 키타로 아버지들의 이야기", rating: 7.9, release: "2024-06-12", views: 1100, img: "10_키타로탄생.jpg", info: "movie_info10" },
+        { title: "존 오브 인터레스트", description: "이토록 완벽한 집이 또 있을까요?", rating: 8.6, release: "2024-06-05", views: 1500, img: "11_존오브인터레스트.jpg", info: "movie_info11" },
+        { title: "1초 앞, 1초 뒤", description: "타이밍은 언제나 맞지 않아", rating: 7.7, release: "2024-06-19", views: 1400, img: "12_1초앞1초뒤.jpg", info: "movie_info12" },
+        { title: "(라이브뷰잉) LILPACON", description: "Going out", rating: 8.4, release: "2024-07-12", views: 1600, img: "13_릴파콘.jpg", info: "movie_info13" },
+        { title: "Pricilla", description: "엘비스가 사랑한 유일한 소녀. 세상을 뒤흔든 센세이션 로맨스", rating: 8.0, release: "2024-06-19", views: 1500, img: "14_프리실라.jpg", info: "movie_info14" },
+        { title: "퓨리오사 - 매드맥스 사가", description: "분노가 깨어나다", rating: 7.6, release: "2024-05-22", views: 1300, img: "15_퓨리오사.jpg", info: "movie_info15" }
     ];
 
     function displayMovies(movies) {
