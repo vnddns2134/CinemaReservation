@@ -3,7 +3,11 @@
 
 
 Member.Java - Entity
+
 MemberRepository.Java - Repository
+
 VanController.Java - Controller
+
 P7Application.Java - Applcation
+
 applcation.properties - theater_db 사용 명시
