@@ -35,6 +35,7 @@
             margin: 0;
             text-align: center;
         }
+
         h1 {
             display: inline-block;
         }
@@ -97,16 +98,20 @@
         }
 
         .container ul li {
-            padding: 5px;
+            padding: 10px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transition: background-color 0.3s;
         }
 
         .container ul li:hover,
         .container ul li.selected {
-            background-color: #ddd;
+            background-color: #e0e0e0;
         }
 
         .footer {
@@ -136,6 +141,7 @@
             border-radius: 5px;
             text-decoration: none;
         }
+
         .select-seats:hover {
             background-color: #0056b3;
         }
@@ -179,7 +185,7 @@
         }
 
         .time-list button:hover {
-            background-color: #555;
+            background-color: #0056b3;
         }
 
         .time-list button.selected {
@@ -211,13 +217,13 @@
                 <li data-movie="탈주">탈주</li>
                 <li data-movie="콰이어트플레이스">콰이어트플레이스</li>
                 <li data-movie="핸섬가이즈">핸섬가이즈</li>
-                <li data-movie="극장판 하이큐!! 쓰레기장의 결전">극장판 하이큐!! 쓰레기장의 결전</li>
+                <li data-movie="극장판하이큐!!쓰레기장의결전">극장판 하이큐!! 쓰레기장의 결전</li>
                 <li data-movie="밤낚시">밤낚시</li>
                 <li data-movie="북극백화점의 안내원">북극백화점의 안내원</li>
-                <li data-movie="프렌치 수프">프렌치 수프</li>
-                <li data-movie="키타로 탄생 게게게의 수수께끼">키타로 탄생 게게게의 수수께끼</li>
-                <li data-movie="존 오브 인터레스트">존 오브 인터레스트</li>
-                <li data-movie="1초 앞, 1초 뒤">1초 앞, 1초 뒤</li>
+                <li data-movie="프렌치수프">프렌치 수프</li>
+                <li data-movie="키타로탄생 게게게의 수수께끼">키타로 탄생 게게게의 수수께끼</li>
+                <li data-movie="존오브인터레스트">존 오브 인터레스트</li>
+                <li data-movie="1초앞,1초뒤">1초 앞, 1초 뒤</li>
                 <li data-movie="LILPACON">LILPACON：Going Out - SOOPER CONCERT</li>
                 <li data-movie="프리실라">프리실라</li>
                 <li data-movie="퓨리오사-매드맥스 사가">퓨리오사-매드맥스 사가</li>
@@ -260,6 +266,7 @@
         const theaters = document.querySelectorAll(".theaters li");
         const dates = document.querySelectorAll(".dates li");
         const timeList = document.querySelector(".time-list");
+
         const selectSeatsButton = document.querySelector(".select-seats");
 
         const fixedTimes = ["9:00", "11:00", "13:00", "15:00", "17:00", "19:00", "21:00"];
@@ -335,12 +342,14 @@
 <br><br><br><br><br> <hr> <br><br>
 
 <span style="margin-left: 80px;"></span>
-<fieldset style="width: 550px;">
-    <span style="font-size: 20px; font-weight:bold;">공지사항</span> <span style="color: #6E6E6E; margin-left: 30px;"> 스파이더맨 한정판 피규어의 판매가 종료될 수 있습니다.</span><br>
+<fieldset style="width: 550px; padding: 10px;">
+    <legend style="font-size: 20px; font-weight: bold; color: #333;">공지사항</legend>
+    <p style="color: #6E6E6E;">스파이더맨 한정판 피규어의 판매가 종료될 수 있습니다.</p>
     <hr>
-    <span style="font-size: 20px; font-weight:bold;">고객센터</span> <span style="font-size: 20px; margin-left: 30px;">051-200-6212</span><br>
-    <span style="color: #6E6E6E; margin-left: 112px;">고객센터 운영시간 (평일 09:00~18:00)</span><br>
-    <span style="color: #6E6E6E; margin-left: 112px;">업무시간 외 자동응답 안내 가능합니다.</span>
+    <legend style="font-size: 20px; font-weight: bold; color: #333;">고객센터</legend>
+    <p style="font-size: 16px; margin-bottom: 5px;">051-200-6212</p>
+    <p style="color: #6E6E6E; font-size: 14px; margin-bottom: 5px;">고객센터 운영시간 (평일 09:00~18:00)</p>
+    <p style="color: #6E6E6E; font-size: 14px;">업무시간 외 자동응답 안내 가능합니다.</p>
 </fieldset>
 
 <br><br><br><br><br>
@@ -351,4 +360,5 @@
 
 </body>
 </html>
+
 
