@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -252,7 +252,7 @@
 
     <header>
         <a href="home"><h1 style="color :white">LuxCinema</h1> </a>
-        <a href="home"><button id="logoutBtn">Logout</button></a>
+        <a href="logout"><button id="logoutBtn">로그아웃</button></a>
     </header>
 
 <nav>
