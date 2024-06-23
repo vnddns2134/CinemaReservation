@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxCinema - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        h1 {
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .movie {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .movie img {
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+        }
+        .movie h3 {
+            padding: 10px 0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        fieldset {
+            display: inline-block; /* 필드셋을 인라인 블록 요소로 설정 */
+            width: 200px;
+            margin-left: 35px;
+            background-color: white; /* 배경색을 흰색으로 설정 */
+            padding: 20px; /* 필요한 경우 여백 추가 */
+            border-radius: 10px; /* 테두리의 모서리를 10px 둥글게 설정 */
+        }
+        .video-container {
+            display: flex;
+            justify-content: center; /* 가로 중앙 정렬 */
+            align-items: center;    /* 세로 중앙 정렬 */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>LuxCinema</h1>
+</header>
+
+<nav>
+    <a href="movieList.html">영화 목록</a>
+    <a href="#">극장 선택</a>
+    <a href="#">예매</a>
+    <a href="signin.html">로그인</a>
+    <a href="signup.html">회원가입</a>
+</nav>
+
+<div class="video-container">
+    <iframe width="1200" height="700" src="https://www.youtube.com/embed/ivpHW4MWho8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div class="main-content">
+    <h1 style="margin-left: 80px;">현재 상영중인 영화</h1> <a href="movieList.html"><button style="margin-left: 1360px;">전체보기</button></a>
+    <div class="movie-list">
+        <div class="movie">
+            <a href="movie_info1.html">
+                <img src="C:\SW\movie_post\1_인사이드아웃2.jpg" alt="Movie 1">
+            </a>
+            <h3>인사이드 아웃 2</h3>
+        </div>
+        <div class="movie">
+            <a href="movie_info2.html">
+                <img src="C:\SW\movie_post\2_하이재킹.jpg" alt="Movie 2">
+            </a>
+            <h3>하이재킹</h3>
+        </div>
+        <div class="movie">
+            <a href="movie_info3.html">
+                <img src="C:\SW\movie_post\3_탈주.jpg" alt="Movie 3">
+            </a>
+            <h3>탈주</h3>
+        </div>
+        <div class="movie">
+            <a href="movie_info4.html">
+                <img src="C:\SW\movie_post\4_핸섬가이즈.jpg" alt="Movie 4">
+            </a>
+            <h3>핸섬가이즈</h3>
+        </div>
+        <div class="movie">
+            <a href="movie_info5.html">
+                <img src="C:\SW\movie_post\5_콰이어트플레이스.jpg" alt="Movie 5">
+            </a>
+            <h3>콰이어트 플레이스</h3>
+        </div>
+        <!-- Add more movie items as needed -->
+    </div>
+</div>
+
+<hr> <br><br>
+<h1 style="margin-left: 120px;">스토어</h1>
+<br>
+
+<span style="margin-left: 80px;"></span>
+<fieldset>
+    <legend><h2>우리 가족 패키지</h2></legend>
+    <img src="C:\SW\package\패키지1.jpg" alt="pack" width="200" height="200"> <br>우리 가족 패키지<br>62,000원
+</fieldset>
+<fieldset>
+    <legend><h2>커플 패키지</h2></legend>
+    <img src="C:\SW\package\패키지2.jpg" alt="pack" width="200" height="200"> <br>커플 패키지<br>35,000원
+</fieldset>
+<fieldset>
+    <legend><h2>양손 가득 패키지</h2></legend>
+    <img src="C:\SW\package\패키지3.jpg" alt="pack" width="200" height="200"> <br>양손 가득 패키지<br>18,000원
+</fieldset>
+<fieldset>
+    <legend><h2>기프트콘</h2></legend>
+    <img src="C:\SW\package\기프트콘1.jpg" alt="pack" width="200" height="200"> <br>기프트콘<br>13,000원
+</fieldset>
+<fieldset>
+    <legend><h2>IMAX 기프트콘</h2></legend>
+    <img src="C:\SW\package\기프트콘2.jpg" alt="pack" width="200" height="200"> <br>IMAX 기프트콘<br>18,000원
+</fieldset>
+<fieldset>
+    <legend><h2>4DX 기프트콘</h2></legend>
+    <img src="C:\SW\package\기프트콘3.jpg" alt="pack" width="200" height="200"> <br>4DX 기프트콘<br>19,000원
+</fieldset>
+
+<br><br><br><br><br> <hr> <br><br>
+
+<span style="margin-left: 80px;"></span>
+<fieldset style="width: 550px;">
+    <span style="font-size: 20px; font-weight:bold;">공지사항</span> <span style="color: #6E6E6E; margin-left: 30px;"> 스파이더맨 한정판 피규어의 판매가 종료될 수 있습니다.</span><br>
+    <hr>
+    <span style="font-size: 20px; font-weight:bold;">고객센터</span> <span style="font-size: 20px; margin-left: 30px;">051-200-6212</span><br>
+    <span style="color: #6E6E6E; margin-left: 112px;">고객센터 운영시간 (평일 09:00~18:00)</span><br>
+    <span style="color: #6E6E6E; margin-left: 112px;">업무시간 외 자동응답 안내 가능합니다.</span>
+</fieldset>
+
+<br><br><br><br><br>
+<footer>
+    <p>&copy; 2024 LuxCinema. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
