@@ -474,20 +474,12 @@ body {
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const seats = document.querySelectorAll('.row .seat:not(.occupied)');
-            const selectionInfo = document.getElementById('selectionInfo');
-            const reserveButton = document.getElementById('reserveButton');
-            const modal = document.getElementById("myModal");
-            const span = document.getElementsByClassName("close")[0];
-            const closeModal = document.getElementById("closeModal");
-            let selectedSeatsArray = [];
-        
-            // 예시 세션 데이터
+            const urlParams = new URLSearchParams(window.location.search);
             const sessionData = {
-                movieName: "영화 이름 예시",
-                theater: "영화관 지점 예시",
-                date: "2024-06-23",
-                time: "18:30"
+                movieName: urlParams.get('movie') || "error",
+                theater: urlParams.get('theater') || "error",
+                date: urlParams.get('date') || "error",
+                time: urlParams.get('time') || "error"
             };
         
             // 세션 데이터를 영화 정보 블록에 표시
@@ -495,6 +487,14 @@ body {
             document.getElementById("theater").textContent = `영화관 지점: ${sessionData.theater}`;
             document.getElementById("date").textContent = `예매 날짜: ${sessionData.date}`;
             document.getElementById("time").textContent = `예매 시간: ${sessionData.time}`;
+        
+            const seats = document.querySelectorAll('.row .seat:not(.occupied)');
+            const selectionInfo = document.getElementById('selectionInfo');
+            const reserveButton = document.getElementById('reserveButton');
+            const modal = document.getElementById("myModal");
+            const span = document.getElementsByClassName("close")[0];
+            const closeModal = document.getElementById("closeModal");
+            let selectedSeatsArray = [];
         
             seats.forEach(seat => {
                 seat.addEventListener('click', () => {
@@ -543,7 +543,7 @@ body {
                 }
             }
         });
-        
+         
     </script>
     <br><br><br><br><br> <hr> <br><br>
 
