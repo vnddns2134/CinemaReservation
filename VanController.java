@@ -75,104 +75,87 @@ package com.web.p7; // 컨트롤러
     }
 
     @GetMapping("/movieList") // 영화목록
-    public String movieList(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieList() {
       return "movieList";
     }
 
     @GetMapping("/movie_info1") // 영화 1번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo1() {
       return "movie_info1";
     }
 
     @GetMapping("/movie_info2") // 영화 2번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo2() {
       return "movie_info2";
     }
 
     @GetMapping("/movie_info3") // 영화 3번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo3() {
       return "movie_info3";
     }
 
     @GetMapping("/movie_info4") // 영화 4번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo4() {
       return "movie_info4";
     }
 
     @GetMapping("/movie_info5") // 영화 5번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo5() {
       return "movie_info5";
     }
 
     @GetMapping("/movie_info6") // 영화 6번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo6() {
       return "movie_info6";
     }
 
     @GetMapping("/movie_info7") // 영화 7번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo7() {
       return "movie_info7";
     }
 
     @GetMapping("/movie_info8") // 영화 8번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo8() {
       return "movie_info8";
     }
 
     @GetMapping("/movie_info9") // 영화 9번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo9() {
       return "movie_info9";
     }
 
     @GetMapping("/movie_info10") // 영화 10번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo10() {
       return "movie_info10";
     }
 
     @GetMapping("/movie_info11") // 영화 11번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo11() {
       return "movie_info11";
     }
 
     @GetMapping("/movie_info12") // 영화 12번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo12() {
       return "movie_info12";
     }
 
     @GetMapping("/movie_info13") // 영화 13번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo13() {
       return "movie_info13";
     }
 
     @GetMapping("/movie_info14") // 영화 14번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo14() {
       return "movie_info14";
     }
 
     @GetMapping("/movie_info15") // 영화 15번
-    public String movieInfo1(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String movieInfo15() {
       return "movie_info15";
     }
 
     @GetMapping("/cinema") // 극장선택
-    public String cinema(HttpSession se, Model mo) {
-      mo.addAttribute("id", se.getAttribute("id"));
+    public String cinema() {
       return "cinema";
     }
   
@@ -183,15 +166,20 @@ package com.web.p7; // 컨트롤러
     }
 
     @GetMapping("/seat_select") // 좌석선택
-    public String seatSelect(HttpSession se, String movieName, String theater, String date, String time, String selectedSeatsArray, Model mo, RedirectAttributes re) {
+    public String seatSelect(HttpSession se, Model mo) {
       mo.addAttribute("id", se.getAttribute("id"));
-      if(morep.updateMovie(id, movieName, theater, date, time, selectedSeatsArray) == 0) //updateMovie 구현 필요
-        re.addAttribute("msg", "예매 실패. 고객센터로 문의하세요.");
-      else
-        re.addAttribute("msg", "예매되었습니다.");
+      return "seat_select";
+    }
 
-      re.addAttribute("url", "home");
-      return "redirect:/popup";
+    @GetMapping("/seat_insert") // 좌석선택_데이터 추가
+    public String seatInsert(String id, String movieName, String theater, String date, String time, String selectedSeatsArray, RedirectAttributes re) {
+      Member mo = new Movie();
+      mo.id = id; mo.movieName = movieName; mo.theater = theater;
+      mo.date = date; mo.time = time; mo.seats = selectedSeatsArray
+      morep.save(mo); // 회원-영화 예매 정보 업데이트
+      re.addAttribute("msg", id+"님, 예매되었습니다.");
+      re.addAttribute("url", "/home");
+      return "redirect:/home";
     }
 
     @GetMapping("/mypage") // 마이페이지
