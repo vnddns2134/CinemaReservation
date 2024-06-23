@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxCinema - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        h1 {
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .movie-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .movie {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .movie img {
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+        }
+        .movie h3 {
+            padding: 10px 0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        fieldset {
+            display: inline-block; /* 필드셋을 인라인 블록 요소로 설정 */
+            width: 200px;
+            margin-left: 35px;
+            background-color: white; /* 배경색을 흰색으로 설정 */
+            padding: 20px; /* 필요한 경우 여백 추가 */
+            border-radius: 10px; /* 테두리의 모서리를 10px 둥글게 설정 */
+        }
+        .video-container {
+            display: flex;
+            justify-content: center; /* 가로 중앙 정렬 */
+            align-items: center;    /* 세로 중앙 정렬 */
+        }
+    </style>
+    <a href="member.html" style="position: absolute; top: 10px; right: 10px; font-size: 12px; color:white">관리자페이지로 넘어가기</a>
+</head>
+<body>
+
+<header>
+    <a href="home.html"><h1 style="color :white">LuxCinema</h1> </a>
+</header>
+
+<nav>
+    <a href="movieList.html">영화 목록</a>
+    <a href="cinema.html">극장 선택</a>
+    <a href="booking.html">예매</a>
+    <a href="login.html">로그인</a>
+    <a href="logup.html">회원가입</a>
+</nav>
+
+<div align="center">
+<iframe 
+        src="https://kko.to/irk1MW9o1Q" 
+        name = "map"
+        width="1200" 
+        height="900" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy">
+</iframe>
+</div>
+
+<nav>
+<a href="https://kko.to/irk1MW9o1Q" target = "map">서면 삼정 타워</a>
+<a href="https://kko.to/ZWB9tmAx3p" target = "map">아시아드</a>
+<a href="https://kko.to/uAKiyRCLTr" target = "map">센텀시티</a>
+<a href="https://kko.to/YPbfD91XyR" target = "map">서면</a>
+<a href="https://kko.to/oR4_xrw4ge" target = "map">대연</a>
+</nav>
+<hr> <br><br>
+
+<span style="margin-left: 80px;"></span>
+<fieldset style="width: 550px;">
+    <span style="font-size: 20px; font-weight:bold;">공지사항</span> <span style="color: #6E6E6E; margin-left: 30px;"> 스파이더맨 한정판 피규어의 판매가 종료될 수 있습니다.</span><br>
+    <hr>
+    <span style="font-size: 20px; font-weight:bold;">고객센터</span> <span style="font-size: 20px; margin-left: 30px;">051-200-6212</span><br>
+    <span style="color: #6E6E6E; margin-left: 112px;">고객센터 운영시간 (평일 09:00~18:00)</span><br>
+    <span style="color: #6E6E6E; margin-left: 112px;">업무시간 외 자동응답 안내 가능합니다.</span>
+</fieldset>
+
+<br><br><br><br><br>
+<footer>
+    <p>&copy; 2024 LuxCinema. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
