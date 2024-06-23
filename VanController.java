@@ -173,9 +173,9 @@ package com.web.p7; // 컨트롤러
 
     @GetMapping("/seat_insert") // 좌석선택_데이터 추가
     public String seatInsert(String id, String movieName, String theater, String date, String time, String selectedSeatsArray, RedirectAttributes re) {
-      Member mo = new Movie();
+      Movie mo = new Movie();
       mo.id = id; mo.movieName = movieName; mo.theater = theater;
-      mo.date = date; mo.time = time; mo.seats = selectedSeatsArray
+      mo.date = date; mo.time = time; mo.seats = selectedSeatsArray;
       morep.save(mo); // 회원-영화 예매 정보 업데이트
       re.addAttribute("msg", id+"님, 예매되었습니다.");
       re.addAttribute("url", "/home");
@@ -218,3 +218,4 @@ package com.web.p7; // 컨트롤러
       se.invalidate();
       return "redirect/home";
     }
+ }
