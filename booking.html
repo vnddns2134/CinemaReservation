@@ -232,10 +232,11 @@
         <div class="theaters">
             <h2>극장</h2>
             <ul>
+                <li data-theater="서면삼정타워">서면삼정타워</li>
+                <li data-theater="아시아드">아시아드</li>
+                <li data-theater="센텀시티">센텀시티</li>
                 <li data-theater="서면">서면</li>
-                <li data-theater="하단">하단</li>
-                <li data-theater="건대입구">건대입구</li>
-                <li data-theater="구로">구로</li>
+                <li data-theater="대연">대연</li>
             </ul>
         </div>
         <div class="dates">
@@ -330,7 +331,7 @@
             if (sessionData.movieName && sessionData.theater && sessionData.date && sessionData.time) {
                 const confirmationMessage = `${sessionData.movieName}, ${sessionData.theater}, ${sessionData.date}, ${sessionData.time}로 하시겠습니까?`;
                 if (confirm(confirmationMessage)) {
-                    const url = `seat_select.html?movie=${encodeURIComponent(sessionData.movieName)}&theater=${encodeURIComponent(sessionData.theater)}&date=${encodeURIComponent(sessionData.date)}&time=${encodeURIComponent(sessionData.time)}`;
+                    const url = `seat_select.html?movies=${encodeURIComponent(sessionData.movieName)}&theaters=${encodeURIComponent(sessionData.theater)}&dates=${encodeURIComponent(sessionData.date)}&times=${encodeURIComponent(sessionData.time)}`;
                     window.location.href = url;
                 }
             } else {
@@ -360,5 +361,3 @@
 
 </body>
 </html>
-
-
